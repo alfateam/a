@@ -4,6 +4,7 @@ _A_ is a nodejs module which consists of _A mocking framework_ and _A testing fr
 
 _A Mocking framework_
 ===================
+
 Mocking a function 
 ------------------
 
@@ -23,6 +24,8 @@ original(); //returns 'realValue'
 
 ````
 
+
+
 __strict mock__
 ````javascript
 
@@ -38,6 +41,8 @@ original(); //returns 'fake'
 original(); //throws unexpected arguments
 
 ````
+
+
 
 __strict mock with arguments__
 ````javascript
@@ -57,6 +62,8 @@ original(); //throws unexpected arguments
 original('foo'); //throws unexpected arguments
 
 ````
+
+
 
 __strict mock with multiple arguments__
 ````javascript
@@ -78,6 +85,8 @@ original('foo', 'bar'); //throws unexpected arguments
 
 ````
 
+
+
 __strict mock with repeats__
 ````javascript
 
@@ -95,6 +104,8 @@ original(); //throws unexpected arguments
 
 ````
 
+
+
 __strict mock ignoring arguments__
 ````javascript
 
@@ -110,6 +121,8 @@ original('someRandomValue'); //returns 'fake1'
 original(); //throws unexpected arguments
 
 ````
+
+
 
 __strict mock with interceptor__
 ````javascript
@@ -130,6 +143,8 @@ original('someRandomValue'); //returns 'fake1'
 original(); //throws unexpected arguments
 
 ````
+
+
 
 __strict mock - advanced scenario__
 ````javascript
