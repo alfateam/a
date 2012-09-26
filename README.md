@@ -1,13 +1,13 @@
-A
+_A_
 =
-A is a nodejs module which consists of A mocking framework and A testing framework. 
+_A_ is a nodejs module which consists of _A mocking framework_ and _A testing framework_. 
 
-A Mocking framework
+_A Mocking framework_
 ===================
 Mocking a function 
+------------------
 
-partial mock
-------------
+__partial mock__
 ````javascript
 
 var original = function() {
@@ -23,8 +23,7 @@ original(); //returns 'realValue'
 
 ````
 
-strict mock
------------
+__strict mock__
 ````javascript
 
 var original = function() {
@@ -40,8 +39,7 @@ original(); //throws unexpected arguments
 
 ````
 
-strict mock with arguments
---------------------------
+__strict mock with arguments__
 ````javascript
 
 var original = function(arg) {
@@ -60,8 +58,7 @@ original('foo'); //throws unexpected arguments
 
 ````
 
-strict mock with multiple arguments
---------------------------
+__strict mock with multiple arguments__
 ````javascript
 
 var original = function(arg1, arg2) {
@@ -81,9 +78,7 @@ original('foo', 'bar'); //throws unexpected arguments
 
 ````
 
-
-strict mock with repeats
---------------------------
+__strict mock with repeats__
 ````javascript
 
 var original = function() {
@@ -100,8 +95,7 @@ original(); //throws unexpected arguments
 
 ````
 
-strict mock ignoring arguments
---------------------------
+__strict mock ignoring arguments__
 ````javascript
 
 var original = function(arg) {
@@ -117,8 +111,7 @@ original(); //throws unexpected arguments
 
 ````
 
-strict mock with interceptor
---------------------------
+__strict mock with interceptor__
 ````javascript
 
 var original = function(arg) {
@@ -138,8 +131,7 @@ original(); //throws unexpected arguments
 
 ````
 
-strict mock - advanced scenario
--------------------------------
+__strict mock - advanced scenario__
 ````javascript
 
 var original = function(arg, callback) {
@@ -166,5 +158,5 @@ original('testValue',foo); //throws unexpected arguments
 
 
 
-A Testing framework
+_A Testing framework_
 ===================
