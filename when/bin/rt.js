@@ -2,10 +2,10 @@
 
 var cwd = process.cwd();
 var glob = require('glob');
-var summary = require('when').summary;
+var summary = require('a').when.summary;
 glob(cwd + '/**/when*.js', function(err, files) {
     for(var i in files.reverse()) {
-      require(files[i].replace(/\.js$/, ''));
+      require(files[i]);
     }
     summary();
 });
