@@ -1,7 +1,10 @@
 {
   "name": "a",
-  "version": "0.0.1",
+  "version": "0.0.2",  
   "main": "index.js",
+  "title": "a",
+  "description": "Mocking framework and tdd in compact when-style. With recursive test runner",  
+  "keywords": ["mock","mocking","partial mock","strict mock","tdd","bdd","test runner"],
   "dependencies": {
 		"glob": "> =3.1.10",
 		"mocha": ">=1.1.0"
