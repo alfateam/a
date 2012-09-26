@@ -1,0 +1,12 @@
+{
+  "name": "x",
+  "version": "0.0.1",
+  "main": "index.js",
+  "dependencies": {
+		"glob": "> =3.1.10",
+		"mocha": ">=1.1.0"
+  },
+  "bin": {
+    "rt.js": "./when/bin/rt.js"
+  }
+}
