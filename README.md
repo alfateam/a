@@ -9,7 +9,7 @@ Mocking a function
 ------------------
 
 __partial mock__
-````javascript
+```javascript
 
 var original = function() {
 	return 'realValue';
@@ -22,12 +22,12 @@ mock.expect().return('fake');
 original(); //returns 'fake'
 original(); //returns 'realValue'
 
-````
+```
 
 
 
 __strict mock__
-````javascript
+```javascript
 
 var original = function() {
 	return 'realValue';
@@ -40,12 +40,12 @@ mock.expect().return('fake');
 original(); //returns 'fake'
 original(); //throws unexpected arguments
 
-````
+```
 
 
 
 __strict mock with arguments__
-````javascript
+```javascript
 
 var original = function(arg) {
 	return 'realValue';
@@ -61,12 +61,12 @@ original('testValue2'); //returns 'fake2'
 original(); //throws unexpected arguments
 original('foo'); //throws unexpected arguments
 
-````
+```
 
 
 
 __strict mock with multiple arguments__
-````javascript
+```javascript
 
 var original = function(arg1, arg2) {
 	return 'realValue';
@@ -83,12 +83,12 @@ original('firstArg2', 'secondArg2'); //returns 'fake2'
 original('foo'); //throws unexpected arguments
 original('foo', 'bar'); //throws unexpected arguments
 
-````
+```
 
 
 
 __strict mock with repeats__
-````javascript
+```javascript
 
 var original = function() {
 	return 'realValue';
@@ -102,12 +102,12 @@ original(); //returns 'fake'
 original(); //returns 'fake'
 original(); //throws unexpected arguments
 
-````
+```
 
 
 
 __strict mock ignoring arguments__
-````javascript
+```javascript
 
 var original = function(arg) {
 	return 'realValue';
@@ -120,12 +120,12 @@ mock.expectAnything().return('fake1');
 original('someRandomValue'); //returns 'fake1'
 original(); //throws unexpected arguments
 
-````
+```
 
 
 
 __strict mock with interceptor__
-````javascript
+```javascript
 
 var original = function(arg) {
 	return 'realValue';
@@ -142,12 +142,12 @@ function onCalled(arg) {
 original('someRandomValue'); //returns 'fake1'
 original(); //throws unexpected arguments
 
-````
+```
 
 
 
 __strict mock - advanced scenario__
-````javascript
+```javascript
 
 var original = function(arg, callback) {
 	return 'realValue';
@@ -169,7 +169,7 @@ function foo() {
 original('testValue', foo); //returns 'fake1'
 original('testValue',foo); //throws unexpected arguments
 
-````
+```
 
 
 
