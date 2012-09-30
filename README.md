@@ -260,7 +260,10 @@ require('./realDep'); //returns fakeDep
 require('./realDep'); //returns realDep
 
 ```
-
+Mocking require 
+----------------
+Not documented yet. See mockSpec/testIntegration.js
 
 _A Testing framework_
 ===================
+Not fully documented yet. See dummy_specs.
