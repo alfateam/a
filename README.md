@@ -160,7 +160,7 @@ original(); //throws unexpected arguments
 
 ```
 
-__strict mock - verify (fail)
+__strict mock - verify (fail)__
 ```javascript
 
 var original = function(arg) {
@@ -177,7 +177,7 @@ mock.verify(); //throws mock has 1 pending functions
 
 ```
 
-__strict mock - verify (success)
+__strict mock - verify (success)__
 ```javascript
 
 var original = function(arg) {
@@ -234,9 +234,6 @@ expectRequire('./realDep').return(fakeDep);
 
 require('./realDep'); //returns fakeDep
 require('./realDep'); //returns realDep (behaves like a partial mock)
-
-original(); //returns 'fake'
-original(); //returns 'realValue'
 
 ```
 
