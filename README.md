@@ -1,10 +1,16 @@
 _A_
 =
 _A_ is a nodejs module which consists of _A mocking framework_ and _A testing framework_. 
+=
 __how to install__
 ```
 npm install a
 ```
+__..or if you want the recursive test runner ('when'), install globally..__
+```
+npm install a -g
+```
+
 _Mocking_
 ===================
 
