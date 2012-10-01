@@ -1,8 +1,11 @@
 _A_
 =
 _A_ is a nodejs module which consists of _A mocking framework_ and _A testing framework_. 
-
-_A Mocking framework_
+__how to install__
+```
+npm install a
+```
+_Mocking_
 ===================
 
 Mocking a function 
