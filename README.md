@@ -260,9 +260,36 @@ require('./realDep'); //returns fakeDep
 require('./realDep'); //returns realDep
 
 ```
-Object mock
+Mocking an object
 ----------------
-Not documented yet. See mockSpec/testIntegration.js
+__partial object mock__
+
+'''javascript
+
+	function newCustomer(_name) {
+
+		var c = {};
+
+		c.getName = function () 
+		{
+			return _name;
+		};
+		
+		return c;
+	}
+
+
+	var customer = newCustomer('Alfonzo The Real');
+	var customerMock = mock(customer);
+
+	customerMock.getName.expect().return('Johnny Fake');
+
+	customer.getName(); //returns Alfonzo The Real
+	customer.getName(); //returns Johnny Fake
+	customerMock.verify(); //returns true
+
+'''javascript
+
 
 _A Testing framework_
 ===================
