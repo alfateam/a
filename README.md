@@ -265,27 +265,25 @@ Mocking an object
 __partial object mock__
 ```javascript
 
-	function newCustomer(_name) {
+function newCustomer(_name) {
+	var c = {};
+	
+	c.getName = function () 
+	{
+		return _name;
+	};
 
-		var c = {};
+	return c;
+}
 
-		c.getName = function () 
-		{
-			return _name;
-		};
-		
-		return c;
-	}
+var customer = newCustomer('Alfonzo The Real');
+var customerMock = mock(customer);
 
+customerMock.getName.expect().return('Johnny Fake');
 
-	var customer = newCustomer('Alfonzo The Real');
-	var customerMock = mock(customer);
-
-	customerMock.getName.expect().return('Johnny Fake');
-
-	customer.getName(); //returns Alfonzo The Real
-	customer.getName(); //returns Johnny Fake
-	customerMock.verify(); //returns true
+customer.getName(); //returns Alfonzo The Real
+customer.getName(); //returns Johnny Fake
+customerMock.verify(); //returns true
 
 ```
 
