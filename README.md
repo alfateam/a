@@ -261,7 +261,7 @@ require('./realDep'); //returns realDep
 
 ```
 Mocking an object
-----------------
+-----------------
 __partial object mock__
 
 '''javascript
@@ -288,7 +288,7 @@ __partial object mock__
 	customer.getName(); //returns Johnny Fake
 	customerMock.verify(); //returns true
 
-'''javascript
+'''
 
 
 _A Testing framework_
