@@ -18,7 +18,7 @@ Mocking a function
 ------------------
 
 __partial mock__
-```javascript
+```
 
 var original = function() {
 	return 'realValue';
@@ -36,7 +36,7 @@ original(); //returns 'realValue'
 
 
 __strict mock__
-```javascript
+```
 
 var original = function() {
 	return 'realValue';
@@ -54,7 +54,7 @@ original(); //throws unexpected arguments
 
 
 __strict mock with arguments__
-```javascript
+```
 
 var original = function(arg) {
 	return 'realValue';
@@ -75,7 +75,7 @@ original('foo'); //throws unexpected arguments
 
 
 __strict mock with multiple arguments__
-```javascript
+```
 
 var original = function(arg1, arg2) {
 	return 'realValue';
@@ -97,7 +97,7 @@ original('foo', 'bar'); //throws unexpected arguments
 
 
 __strict mock with repeats__
-```javascript
+```
 
 var original = function() {
 	return 'realValue';
@@ -114,7 +114,7 @@ original(); //throws unexpected arguments
 ```
 
 __strict mock with infinite repeats__
-```javascript
+```
 
 var original = function() {
 	return 'realValue';
@@ -132,7 +132,7 @@ original(); //returns 'fake'...
 
 
 __strict mock ignoring arguments__
-```javascript
+```
 
 var original = function(arg) {
 	return 'realValue';
@@ -150,7 +150,7 @@ original(); //throws unexpected arguments
 
 
 __strict mock with interceptor__
-```javascript
+```
 
 var original = function(arg) {
 	return 'realValue';
@@ -170,7 +170,7 @@ original(); //throws unexpected arguments
 ```
 
 __strict mock - verify (fail)__
-```javascript
+```
 
 var original = function(arg) {
 	return 'realValue';
@@ -187,7 +187,7 @@ mock.verify(); //throws mock has 1 pending functions
 ```
 
 __strict mock - verify (success)__
-```javascript
+```
 
 var original = function(arg) {
 	return 'realValue';
@@ -206,7 +206,7 @@ mock.verify(); //returns true
 
 
 __strict mock - advanced scenario__
-```javascript
+```
 
 var original = function(arg, callback) {
 	return 'realValue';
@@ -235,7 +235,7 @@ Mocking require
 ----------------
 
 __expectRequire__
-```javascript
+```
 var fakeDep = {};
 
 var expectRequire = require('a').expectRequire;
@@ -247,7 +247,7 @@ require('./realDep'); //returns realDep (behaves like a partial mock)
 ```
 
 __requireMock (compact syntax)__
-```javascript
+```
 
 var requireMock = require('a').requireMock;
 var fakeDep = requireMock('./realDep'); //returns a strict mock
@@ -257,7 +257,7 @@ require('./realDep'); //returns realDep
 
 ```
 __..is equivalent to ..__
-```javascript
+```
 
 var mock = require('a').mock;
 var expectRequire = require('a').expectRequire;
@@ -272,7 +272,7 @@ require('./realDep'); //returns realDep
 Mocking an object
 -----------------
 __partial object mock__
-```javascript
+```
 
 function newCustomer(_name) {
 	var c = {};
