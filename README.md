@@ -1,8 +1,9 @@
 _A_
-=
+===
 _A_ is a nodejs module which consists of _A mocking framework_ and _A testing framework_. 
-=
+
 __how to install__
+
 ```
 npm install a
 ```
@@ -18,8 +19,8 @@ Mocking a function
 ------------------
 
 __partial mock__
-```
 
+```
 var original = function() {
 	return 'realValue';
 }
@@ -30,14 +31,13 @@ mock.expect().return('fake');
 
 original(); //returns 'fake'
 original(); //returns 'realValue'
-
 ```
 
 
 
 __strict mock__
-```
 
+```
 var original = function() {
 	return 'realValue';
 }
@@ -48,14 +48,13 @@ mock.expect().return('fake');
 
 original(); //returns 'fake'
 original(); //throws unexpected arguments
-
 ```
 
 
 
 __strict mock with arguments__
-```
 
+```
 var original = function(arg) {
 	return 'realValue';
 }
@@ -69,14 +68,13 @@ original('testValue1'); //returns 'fake1'
 original('testValue2'); //returns 'fake2'
 original(); //throws unexpected arguments
 original('foo'); //throws unexpected arguments
-
 ```
 
 
 
 __strict mock with multiple arguments__
-```
 
+```
 var original = function(arg1, arg2) {
 	return 'realValue';
 }
@@ -91,14 +89,13 @@ original('firstArg1', 'secondArg1'); //returns 'fake1'
 original('firstArg2', 'secondArg2'); //returns 'fake2'
 original('foo'); //throws unexpected arguments
 original('foo', 'bar'); //throws unexpected arguments
-
 ```
 
 
 
 __strict mock with repeats__
-```
 
+```
 var original = function() {
 	return 'realValue';
 }
@@ -110,12 +107,11 @@ mock.expect().return('fake').repeat(2);
 original(); //returns 'fake'
 original(); //returns 'fake'
 original(); //throws unexpected arguments
-
 ```
 
 __strict mock with infinite repeats__
-```
 
+```
 var original = function() {
 	return 'realValue';
 }
@@ -127,13 +123,12 @@ mock.expect().return('fake').repeatAny();
 original(); //returns 'fake'
 original(); //returns 'fake'
 original(); //returns 'fake'...
-
 ```
 
 
 __strict mock ignoring arguments__
-```
 
+```
 var original = function(arg) {
 	return 'realValue';
 }
@@ -144,14 +139,12 @@ mock.expectAnything().return('fake1');
 
 original('someRandomValue'); //returns 'fake1'
 original(); //throws unexpected arguments
-
 ```
 
 
 
 __strict mock with interceptor__
 ```
-
 var original = function(arg) {
 	return 'realValue';
 }
@@ -166,12 +159,11 @@ function onCalled(arg) {
 
 original('someRandomValue'); //returns 'fake1'
 original(); //throws unexpected arguments
-
 ```
 
 __strict mock - verify (fail)__
-```
 
+```
 var original = function(arg) {
 	return 'realValue';
 }
@@ -183,12 +175,11 @@ mock.expect('testValue2').return('fake2');
 
 original('testValue1'); //returns 'fake1'
 mock.verify(); //throws mock has 1 pending functions
-
 ```
 
 __strict mock - verify (success)__
-```
 
+```
 var original = function(arg) {
 	return 'realValue';
 }
@@ -201,13 +192,12 @@ mock.expect('testValue2').return('fake2');
 original('testValue1'); //returns 'fake1'
 original('testValue2'); //returns 'fake2'
 mock.verify(); //returns true
-
 ```
 
 
 __strict mock - advanced scenario__
-```
 
+```
 var original = function(arg, callback) {
 	return 'realValue';
 }
@@ -228,13 +218,13 @@ function foo() {
 original('testValue', foo); //returns 'fake1'
 mock.verify() //returns true
 original('testValue',foo); //throws unexpected arguments
-
 ```
 
 Mocking require 
 ----------------
 
 __expectRequire__
+
 ```
 var fakeDep = {};
 
@@ -243,22 +233,21 @@ expectRequire('./realDep').return(fakeDep);
 
 require('./realDep'); //returns fakeDep
 require('./realDep'); //returns realDep (behaves like a partial mock)
-
 ```
 
 __requireMock (compact syntax)__
-```
 
+```
 var requireMock = require('a').requireMock;
 var fakeDep = requireMock('./realDep'); //returns a strict mock
 
 require('./realDep'); //returns fakeDep
 require('./realDep'); //returns realDep
-
 ```
+
 __..is equivalent to ..__
-```
 
+```
 var mock = require('a').mock;
 var expectRequire = require('a').expectRequire;
 
@@ -267,13 +256,13 @@ expectRequire('./realDep').return(fakeDep);
 
 require('./realDep'); //returns fakeDep
 require('./realDep'); //returns realDep
-
 ```
+
 Mocking an object
 -----------------
 __partial object mock__
-```
 
+```
 function newCustomer(_name) {
 	var c = {};
 	
@@ -293,7 +282,6 @@ customerMock.getName.expect().return('Johnny Fake');
 customer.getName(); //returns Alfonzo The Real
 customer.getName(); //returns Johnny Fake
 customerMock.verify(); //returns true
-
 ```
 
 
