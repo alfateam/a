@@ -27,11 +27,11 @@ function ok(testname) {
 	console.log('  %s%s %s%s', green, check_mark, testname, reset);
 	passed++;
 }
+
 function fail(testname, trace) {
 	var msg = util.format('  %s%s %s%s', red, heavy_ballot, testname, reset);
 	console.log(msg);
 	failures[last_suite_name + "\n" + msg] = red + trace + reset;
-
 	failed++;
 }
 function suite(suite_name) {
@@ -39,10 +39,12 @@ function suite(suite_name) {
 	console.log('\n %s %s\n', right_quote, suite_name);
 	suites++;
 }
+
+process.summary = summary;
+
 module.exports = {
 	ok: ok,
 	fail: fail,
-	suite: suite,
-	summary: summary
+	suite: suite
 };
 
