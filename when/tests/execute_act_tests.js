@@ -1,13 +1,13 @@
 var assert = require('assert');
 var test = require('./test');
 var requireMock = require('../../requireMock');
-var nextExecute = requireMock('./execute_act');
 var sut = require('../execute_act');
 var mock = require('../../strictMock');
 
 (function() {
 
 	console.log('when execute with no base');
+	var nextExecute = requireMock('./execute_act');
 	var act = mock();
 	var c = {};
 	var c2 = {};
@@ -26,7 +26,8 @@ var mock = require('../../strictMock');
 
 (function() {
 
-	console.log('when execute with base');	
+	console.log('when execute with base');
+	var nextExecute = requireMock('./execute_act');
 	var act = mock();
 	var base = {};
 	act.base = base;
