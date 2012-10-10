@@ -12,7 +12,7 @@ function build_suite_name(act) {
 
 	function folderArrayToWhenName() {
 		var name = folderArray.pop();
-		if (name.toLowerCase().indexOf('spec') > 0)
+		if (name.toLowerCase().indexOf('spec') >= 0)
 			return name ;
 		return folderArrayToWhenName()  + separator  +  name;
 	}
