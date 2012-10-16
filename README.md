@@ -91,6 +91,25 @@ original('foo'); //throws unexpected arguments
 original('foo', 'bar'); //throws unexpected arguments
 ```
 
+__strict mock expecting array__
+
+```
+var original = function(array) {
+	return 'realValue';
+}
+
+var mock = require('a').mock;
+original = mock();
+mock.expectArray(['a','b']).return('fake1');
+mock.expectArray(['a','b').return('fake2');
+mock.expectArray(['c','d').return('fake3');
+
+original(['a','b']); //returns 'fake1'
+original(['a','b']); //returns 'fake2'
+original(['c','d']); //returns 'fake3'
+original(['a','b']); //throws unexpected arguments
+original(['foo', 'bar']); //throws unexpected arguments
+```
 
 
 __strict mock with repeats__
