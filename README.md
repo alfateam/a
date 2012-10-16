@@ -13,10 +13,15 @@ __how to install__
 npm install a
 ```
 
-__..if you want the recursive test runner, install it globally too__
+
+
+__if you want the test framework, install it globally too__
+
 ```
 npm install a -g
 ```
+
+
 
 _Mocking_
 ===================
