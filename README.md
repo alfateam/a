@@ -1,7 +1,10 @@
 _a_
 ===
 _Mocking framework_ + _testing framework_. 
+
+
 The mocking framework can be used in any JavaScript testing framework.
+
 The testing framework has a short and concise bdd syntax - with reusable contexts.
 
 __how to install__
@@ -9,7 +12,7 @@ __how to install__
 ```
 npm install a
 ```
-__..if you want the recursive test runner ('when'), install globally too..__
+__..if you want the recursive test runner, install it globally too
 ```
 npm install a -g
 ```
