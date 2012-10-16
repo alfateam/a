@@ -1,13 +1,15 @@
-_A_
+_a_
 ===
-_A_ is a nodejs module which consists of _A mocking framework_ and _A testing framework_. 
+_Mocking framework_ + _testing framework_. 
+The mocking framework can be used in any JavaScript testing framework.
+The testing framework has a short and concise bdd syntax - with reusable contexts.
 
 __how to install__
 
 ```
 npm install a
 ```
-__..or if you want the recursive test runner ('when'), install globally..__
+__..if you want the recursive test runner ('when'), install globally too..__
 ```
 npm install a -g
 ```
