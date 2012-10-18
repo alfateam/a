@@ -36,8 +36,8 @@ var original = function() {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock(original);
+var mock = require('a').mock(original);
+original = mock;
 mock.expect().return('fake');
 
 original(); //returns 'fake'
@@ -53,8 +53,8 @@ var original = function() {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect().return('fake');
 
 original(); //returns 'fake'
@@ -70,8 +70,8 @@ var original = function(arg) {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect('testValue1').return('fake1');
 mock.expect('testValue2').return('fake2');
 
@@ -90,8 +90,8 @@ var original = function(arg1, arg2) {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect('firstArg1', 'secondArg1').return('fake1');
 mock.expect('firstArg2', 'secondArg2').return('fake2');
 
@@ -109,8 +109,8 @@ var original = function(array) {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expectArray(['a','b']).return('fake1');
 mock.expectArray(['a','b').return('fake2');
 mock.expectArray(['c','d').return('fake3');
@@ -130,8 +130,8 @@ var original = function() {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect().return('fake').repeat(2);
 
 original(); //returns 'fake'
@@ -146,8 +146,8 @@ var original = function() {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect().return('fake').repeatAny();
 
 original(); //returns 'fake'
@@ -163,8 +163,8 @@ var original = function(arg) {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expectAnything().return('fake1');
 
 original('someRandomValue'); //returns 'fake1'
@@ -174,13 +174,14 @@ original(); //throws unexpected arguments
 
 
 __strict mock with interceptor__
+
 ```
 var original = function(arg) {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect('testValue').whenCalled(onCalled).return('fake1');
 
 function onCalled(arg) {
@@ -198,8 +199,8 @@ var original = function(arg) {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect('testValue1').return('fake1');
 mock.expect('testValue2').return('fake2');
 
@@ -214,8 +215,8 @@ var original = function(arg) {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect('testValue1').return('fake1');
 mock.expect('testValue2').return('fake2');
 
@@ -232,8 +233,8 @@ var original = function(arg, callback) {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect('testValue').expectAnything().whenCalled(onCalled).return('fake1');
 
 function onCalled(arg,callback) {
@@ -278,10 +279,10 @@ require('./realDep'); //returns realDep
 __..is equivalent to ..__
 
 ```
-var mock = require('a').mock;
+var mock = require('a').mock();
 var expectRequire = require('a').expectRequire;
 
-var fakeDep = mock(); 
+var fakeDep = mock; 
 expectRequire('./realDep').return(fakeDep);
 
 require('./realDep'); //returns fakeDep
