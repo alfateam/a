@@ -310,8 +310,8 @@ var customerMock = mock(customer);
 
 customerMock.getName.expect().return('Johnny Fake');
 
-customer.getName(); //returns Alfonzo The Real
 customer.getName(); //returns Johnny Fake
+customer.getName(); //returns Alfonzo The Real
 customerMock.verify(); //returns true
 ```
 
