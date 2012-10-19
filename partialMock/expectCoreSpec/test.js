@@ -4,6 +4,7 @@ var newRequireMock = require('../simple/newRequireMock');
 
 var expect  = newRequireMock('./expect');
 var expectAnything = newRequireMock('./expectAnything');
+var expectArray = newRequireMock('./expectArray');
 var _return = newRequireMock('./return');
 var newWhenCalledEmitter = newRequireMock('../eventEmitter');
 
@@ -74,6 +75,16 @@ describe('expectCore', function(){
 		});
 	});
 
+	describe('expectArray',function() {
+		var expected = {};
+		var arg = {};		
+		expectArray.expect(index+1).expect(mockContext).expect(arg).return(expected);
+		var returned = sut2.expectArray(arg); 
+
+		it('should return expected',function() {
+			assert.equal(expected,returned)
+		});
+	});
 
 	describe('return',function() {
 		var expected = {};

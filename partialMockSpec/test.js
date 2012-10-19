@@ -7,6 +7,7 @@ var expect = newRequireMock('./partialMock/expect');
 var newMockContext = newRequireMock('./partialMock/newMockContext');
 var verify = newRequireMock('./partialMock/verify');
 var expectEmpty = newRequireMock('./partialMock/expectEmpty');
+var expectArray = newRequireMock('./partialMock/expectArray');
 
 var newSut = require('../partialMock');
 
@@ -84,6 +85,28 @@ describe('partialMock', function(){
 			assert.equal(expected,returned)
 		});
 	});
+
+	describe('expectArray',function() {
+		var expected = {};
+		var array = [];		
+		expectArray.expect(0).expect(mockContext).expect(array).return(expected);
+		var returned = sut.expectArray(array); 
+
+		it('should return expected',function() {
+			assert.equal(expected,returned)
+		});
+	});
+
+	describe('expect empty',function() {
+		var expected = {};
+		expectEmpty.expect(mockContext).return(expected);
+		var returned = sut.expect(); 
+
+		it('should return expected',function() {
+			assert.equal(expected,returned)
+		});
+	});
+
 
 
 });

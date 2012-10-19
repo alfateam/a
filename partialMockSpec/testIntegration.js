@@ -24,6 +24,19 @@ describe('partialMock', function(){
 		assert.equal(returned2,fallbackValue);
 	});
 
+	it('should return expected for expected array',function() {
+		var element1 = 'a';
+		var element2 = 'b';
+		var expected = {};
+		var sut = newSut(fallback);
+		sut.expectArray([element1,element2]).return(expected);
+		var returned = sut([element1,element2]);
+		var returned2 = sut([element1,element2]);
+		assert.equal(returned,expected);
+		assert.equal(returned2,fallbackValue);
+	});
+
+
 	it('should return expected for correct arg,arg2',function() {
 		var arg = 'a';
 		var arg2 = 'b';

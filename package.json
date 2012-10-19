@@ -1,10 +1,10 @@
 {
   "name": "a",
-  "version": "0.0.8",
+  "version": "0.1.4",
   "main": "index.js",
   "title": "a",
   "description": "Mocking framework and tdd in compact when-style. With recursive test runner",
-  "keywords": ["mock","mocking","partial mock","strict mock","tdd","bdd","test runner","stub","stubbing","mock require"],
+  "keywords": ["mock","mocking","partial mock","strict mock","tdd","bdd","test runner","stub","stubbing","mock require","verify"],
   "dependencies": {
 		"glob": "> =3.1.10",
 		"mocha": ">=1.1.0"
