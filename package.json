@@ -1,9 +1,9 @@
 {
   "name": "a",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "index.js",
   "title": "a",
-  "description": "Mocking framework and tdd in compact when-style. With recursive test runner",
+  "description": "Mocking framework and test framework in compact when-style. With recursive test runner",
   "keywords": ["mock","mocking","partial mock","strict mock","tdd","bdd","test runner","stub","stubbing","mock require","verify"],
   "dependencies": {
 		"glob": "> =3.1.10",
