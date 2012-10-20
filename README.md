@@ -188,7 +188,7 @@ function onCalled(arg) {
 	//arg == 'testValue'
 }
 
-original('someRandomValue'); //returns 'fake1'
+original('testValue'); //returns 'fake1'
 original(); //throws unexpected arguments
 ```
 
