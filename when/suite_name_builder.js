@@ -3,7 +3,10 @@ var separator = ' \u00bb ';
 
 function build_suite_name(act) {
 
-	var folderArray = act._name.split('/');
+	var splitChar = '/';
+	if (act._name.indexOf('\\') > -1) 
+		splitChar = '\\';
+	var folderArray = act._name.split(splitChar);	
 	folderArray.shift();
 	var shallowActName = actName();
 
@@ -28,5 +31,3 @@ function build_suite_name(act) {
 
 
 module.exports = build_suite_name;
-
-
