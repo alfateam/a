@@ -2,6 +2,7 @@ function create(originalFunc) {
 	var newMockContext = require('./partialMock/newMockContext');
 	var expect = require('./partialMock/expect');
 	var expectAnything = require('./partialMock/expectAnything');
+	var expectArray = require('./partialMock/expectArray');
 	var verify = require('./partialMock/verify');
 	var expectEmpty = require('./partialMock/expectEmpty');
 	var mockContext = newMockContext(originalFunc);
@@ -31,6 +32,11 @@ function create(originalFunc) {
 		var args = [mockContext];
 		return verify.apply(null,args);
 	};
+
+	mock.expectArray = function(array) {
+		var args = [0,mockContext,array];
+		return expectArray.apply(null,args);
+	}
 	
 	return mock;
 }

@@ -1,16 +1,27 @@
-_A_
+_a_
 ===
-_A_ is a nodejs module which consists of _A mocking framework_ and _A testing framework_. 
+_Mocking framework_ + _testing framework_. 
+
+
+The mocking framework can be used in any JavaScript testing framework.
+
+The testing framework has a short and concise bdd syntax - with reusable contexts.
 
 __how to install__
 
 ```
 npm install a
 ```
-__..or if you want the recursive test runner ('when'), install globally..__
+
+
+
+__if you want the test framework, install it globally too__
+
 ```
 npm install a -g
 ```
+
+
 
 _Mocking_
 ===================
@@ -25,8 +36,8 @@ var original = function() {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock(original);
+var mock = require('a').mock(original);
+original = mock;
 mock.expect().return('fake');
 
 original(); //returns 'fake'
@@ -42,8 +53,8 @@ var original = function() {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect().return('fake');
 
 original(); //returns 'fake'
@@ -59,8 +70,8 @@ var original = function(arg) {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect('testValue1').return('fake1');
 mock.expect('testValue2').return('fake2');
 
@@ -79,8 +90,8 @@ var original = function(arg1, arg2) {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect('firstArg1', 'secondArg1').return('fake1');
 mock.expect('firstArg2', 'secondArg2').return('fake2');
 
@@ -91,6 +102,25 @@ original('foo'); //throws unexpected arguments
 original('foo', 'bar'); //throws unexpected arguments
 ```
 
+__strict mock expecting array__
+
+```
+var original = function(array) {
+	return 'realValue';
+}
+
+var mock = require('a').mock();
+original = mock;
+mock.expectArray(['a','b']).return('fake1');
+mock.expectArray(['a','b').return('fake2');
+mock.expectArray(['c','d').return('fake3');
+
+original(['a','b']); //returns 'fake1'
+original(['a','b']); //returns 'fake2'
+original(['c','d']); //returns 'fake3'
+original(['a','b']); //throws unexpected arguments
+original(['foo', 'bar']); //throws unexpected arguments
+```
 
 
 __strict mock with repeats__
@@ -100,8 +130,8 @@ var original = function() {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect().return('fake').repeat(2);
 
 original(); //returns 'fake'
@@ -116,8 +146,8 @@ var original = function() {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect().return('fake').repeatAny();
 
 original(); //returns 'fake'
@@ -133,8 +163,8 @@ var original = function(arg) {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expectAnything().return('fake1');
 
 original('someRandomValue'); //returns 'fake1'
@@ -144,20 +174,21 @@ original(); //throws unexpected arguments
 
 
 __strict mock with interceptor__
+
 ```
 var original = function(arg) {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect('testValue').whenCalled(onCalled).return('fake1');
 
 function onCalled(arg) {
 	//arg == 'testValue'
 }
 
-original('someRandomValue'); //returns 'fake1'
+original('testValue'); //returns 'fake1'
 original(); //throws unexpected arguments
 ```
 
@@ -168,8 +199,8 @@ var original = function(arg) {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect('testValue1').return('fake1');
 mock.expect('testValue2').return('fake2');
 
@@ -184,8 +215,8 @@ var original = function(arg) {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect('testValue1').return('fake1');
 mock.expect('testValue2').return('fake2');
 
@@ -202,8 +233,8 @@ var original = function(arg, callback) {
 	return 'realValue';
 }
 
-var mock = require('a').mock;
-original = mock();
+var mock = require('a').mock();
+original = mock;
 mock.expect('testValue').expectAnything().whenCalled(onCalled).return('fake1');
 
 function onCalled(arg,callback) {
@@ -248,10 +279,10 @@ require('./realDep'); //returns realDep
 __..is equivalent to ..__
 
 ```
-var mock = require('a').mock;
+var mock = require('a').mock();
 var expectRequire = require('a').expectRequire;
 
-var fakeDep = mock(); 
+var fakeDep = mock; 
 expectRequire('./realDep').return(fakeDep);
 
 require('./realDep'); //returns fakeDep
@@ -279,8 +310,8 @@ var customerMock = mock(customer);
 
 customerMock.getName.expect().return('Johnny Fake');
 
-customer.getName(); //returns Alfonzo The Real
 customer.getName(); //returns Johnny Fake
+customer.getName(); //returns Alfonzo The Real
 customerMock.verify(); //returns true
 ```
 
