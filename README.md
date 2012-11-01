@@ -316,6 +316,108 @@ customerMock.verify(); //returns true
 ```
 
 
-_A Testing framework_
+_A test framework_
 ===================
-Not fully documented yet. See dummy_specs.
+_A_ test framework is a simplistic, magic-free library providing unit-testing facilities with a compact, bdd-style syntax. 
+
+In contrast to other bdd-style test frameworks, however, it doesn't allow nesting suites in each other in order to test the SUT(subject under test) in different states. Instead, the framework relies on folder structure to describe the state which the SUT currently is. Suite names are generated based on their filenames. As a result there will be many small test files instead of few big ones with test suites nested in each other.
+
+Test setup -- the "Arrange-Act" part of suites, is separated from the "Assert" part. This way the same setup can be used across different suites. Test setups can, of course, be chained.
+
+
+Examples below can be found here: https://bitbucket.org/pure/a_demo
+
+Example 1
+---------
+Given the following file structure
+- demo/	
+	- counter.js
+	- counter_specs/
+		- new/
+			- increment.js
+			- when_incremented.js
+		- new.js
+		- when_new.js
+	
+__counter.js__
+
+```
+module.exports = function () {
+	var counter = {
+		value: 0,
+		increment: function() { this.value++; }
+	};
+	
+	return counter;
+}
+```
+
+__counter_specs/new.js__
+
+```
+function act(c) {
+	var createCounter = require('../counter');
+	c.sut = createCounter();
+}
+act._name = module.filename;
+module.exports = act;
+```
+
+__counter_specs/when_new.js__
+
+```
+var act = require('./new');
+var c = {}; //test context object
+var when = require('a').when;
+
+when(act, c). //set up
+	it('should be an object').
+		assertTrue(typeof c.sut == 'object')
+	it('should have value equal to zero').
+		assertEqual(0, c.sut.value);
+
+```
+
+__counter_specs/new/increment.js__
+
+```
+function act(c) {
+	c.sut.increment();
+}
+act._name = module.filename;
+act.base = require('../new');
+module.exports = act;
+```
+
+__counter_specs/new/when_incremented.js__
+
+```
+var act = require('./increment');
+var c = {};
+var when = require('a').when;
+
+when(act, c).
+	it('should have value equal to 1').
+		assertEqual(1, c.sut.value);
+
+```
+
+In demo directory run _when_
+	
+	user@localhost:~/a_demo $ when
+
+	 » counter_specs » new
+	
+	  ✓ should be an object
+	  ✓ should have value equal to zero
+	
+	 » counter_specs » new » increment
+	
+	  ✓ should have value equal to 1
+	
+	========== Summary =============
+	
+	
+	suites: 2, passed: 3, failed: 0
+
+
