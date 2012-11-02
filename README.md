@@ -327,7 +327,7 @@ Test setup -- the "Arrange-Act" part of suites, is separated from the "Assert" p
 
 Examples below can be found here: https://bitbucket.org/pure/a_demo
 
-Example 1
+Example
 ---------
 Given the following file structure
 - demo/	
@@ -374,7 +374,9 @@ when(act, c). //set up
 	it('should be an object').
 		assertTrue(typeof c.sut == 'object')
 	it('should have value equal to zero').
-		assertEqual(0, c.sut.value);
+		assertEqual(0, c.sut.value).
+	it('should fail just for fun').
+		assertFail('error message');
 
 ```
 
@@ -410,14 +412,29 @@ In demo directory run _when_
 	
 	  ✓ should be an object
 	  ✓ should have value equal to zero
+	  ✘ should fail just for fun
 	
 	 » counter_specs » new » increment
 	
 	  ✓ should have value equal to 1
 	
 	========== Summary =============
-	
-	
-	suites: 2, passed: 3, failed: 0
 
+	counter_specs » new
+	  ✘ should fail just for fun
+	
+	AssertionError: error message
+    	at retval.assertFail (/home/user/a_demo/node_modules/a/when/it.js:14:11)
+    	at Object.test (/home/user/a_demo/node_modules/a/when/test_invoker.js:5:3)
+    	at Object.retval.assertFail (/home/user/a_demo/node_modules/a/when/it.js:13:5)
+    	at Object.<anonymous> (/home/user/a_demo/counter_specs/when_new.js:11:3)
+    	at Module._compile (module.js:449:26)
+    	at Object.Module._extensions..js (module.js:467:10)
+    	at Module.load (module.js:356:32)
+    	at Function.Module._load (module.js:312:12)
+    	at Module.require (module.js:362:17)
+    	at require (module.js:378:17)
+	------------
+
+	suites: 2, passed: 3, failed: 1
 
