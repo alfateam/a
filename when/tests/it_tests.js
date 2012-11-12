@@ -18,10 +18,13 @@ return (test_invoker);
 		assert(typeof it.assertFail == 'function');
 	});
 
-	test('it should return object containing assertTrue function', function() {
-		assert(typeof it.assertTrue == 'function');
+	test('it should return object containing assertOk function', function() {
+		assert(typeof it.assertOk == 'function');
 	});
 
+	test('it should return object containing assert function', function() {
+		assert(typeof it.assert == 'function');
+	});
 	test('it should return object containing assertEqual function', function() {
 		assert(typeof it.assertEqual == 'function');
 	});
@@ -76,17 +79,31 @@ return (test_invoker);
 		assert(invoked);
 	});
 
-	test('assertTrue should return object containing "it" function', function() {
-		var retval = it.assertTrue();
+	test('assertOk should return object containing "it" function', function() {
+		var retval = it.assertOk();
 		assert(typeof retval.it == 'function');
 	});
 
-	test('assertTrue should invoke test', function() {
+	test('assertOk should invoke test', function() {
 		var invoked;
 		test_invoker.test = function() {
 			invoked = true;
 		}
-		it.assertTrue();
+		it.assertOk();
+		assert(invoked);
+	});
+
+	test('assert should return object containing "it" function', function() {
+		var retval = it.assert();
+		assert(typeof retval.it == 'function');
+	});
+
+	test('assert should invoke test', function() {
+		var invoked;
+		test_invoker.test = function() {
+			invoked = true;
+		}
+		it.assert();
 		assert(invoked);
 	});
 

@@ -16,7 +16,14 @@ function it(title) {
 		return new_it();
 	};
 
-	retval.assertTrue = function(value, message) {
+	retval.assertOk = function(value, message) {
+		x.test(title, function() {
+			assert.ok(value, message);
+		});
+		return new_it();
+	};
+
+	retval.assert = function(value, message) {
 		x.test(title, function() {
 			assert(value, message);
 		});
