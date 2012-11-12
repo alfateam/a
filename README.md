@@ -330,6 +330,7 @@ Examples below can be found here: https://bitbucket.org/pure/a_demo
 Example
 ---------
 Given the following file structure
+
 - demo/	
 	- counter.js
 	- counter_specs/
