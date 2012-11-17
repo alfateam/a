@@ -325,10 +325,11 @@ In contrast to other bdd-style test frameworks, however, it doesn't allow nestin
 Test setup -- the "Arrange-Act" part of suites, is separated from the "Assert" part. This way the same setup can be used across different suites. Test setups can, of course, be chained.
 
 
-Examples below can be found here: https://bitbucket.org/pure/a_demo
+Examples below can be found here: https://github.com/alfateam/a_demo
 
 Example
 ---------
+The test runner ( _when_ ) will search for all files named when*.js in current directory and below.
 Given the following file structure
 
 - demo/	

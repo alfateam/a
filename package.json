@@ -11,7 +11,7 @@
   },
   "repository" : {
          "type" : "git",
-         "url"  : "https://bitbucket.org/pure/a"
+         "url"  : "git@github.com:alfateam/a.git"
       },
   "bin": {
     "when": "./when/bin/rt.js"
