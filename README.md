@@ -330,6 +330,7 @@ Examples below can be found here: https://github.com/alfateam/a_demo
 Example
 ---------
 The test runner ( _when_ ) will search for all files named when*.js in current directory and below.
+
 Given the following file structure
 
 - demo/	
