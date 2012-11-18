@@ -3,10 +3,16 @@ var newContext = requireMock('./newContext');
 var addPrimaryColumn = requireMock('./table/addPrimaryColumn');
 var addColumn = requireMock('./table/addColumn');
 var addJoin = requireMock('./table/addJoin');
+var addHasMany = requireMock('./table/addHasMany');
+var addHasOne = requireMock('./table/addHasOne');
+var getMany = requireMock('./table/getMany');
 var context = {};
 var tableName = {};
 
 function act(c) {
+	c.getMany = getMany;
+	c.addHasOne = addHasOne;
+	c.addHasMany = addHasMany;
 	c.addJoin = addJoin;
 	c.addPrimaryColumn = addPrimaryColumn;		
 	c.addColumn = addColumn;
