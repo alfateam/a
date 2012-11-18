@@ -1,4 +1,4 @@
-var act = require('./addColumn');
+var act = require('./column');
 var c = {};
 var when = require('../../../when/when');
 

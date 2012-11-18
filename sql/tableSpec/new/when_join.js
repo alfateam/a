@@ -1,4 +1,4 @@
-var act = require('./addJoin');
+var act = require('./join');
 var c = {};
 var when = require('../../../when/when');
 
