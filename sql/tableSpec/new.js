@@ -7,9 +7,12 @@ var addHasMany = requireMock('./table/addHasMany');
 var addHasOne = requireMock('./table/addHasOne');
 var getMany = requireMock('./table/getMany');
 var context = {};
-var tableName = {};
+var tableName = 0;
 
 function act(c) {
+	tableName++;
+	//console.log(tableName);
+	//c.tableName = tableName;
 	c.getMany = getMany;
 	c.addHasOne = addHasOne;
 	c.addHasMany = addHasMany;
@@ -21,6 +24,10 @@ function act(c) {
 
 	function stubContext() {
 		c.context = context;
+		newContext.expect(1).return(1).repeat(1);		
+		newContext.expect(2,3).return(2);
+		console.log('one :'  + newContext(1));
+		console.log('two; ' + newContext(2,3));
 		newContext.expect(tableName).return(context);
 	}
 

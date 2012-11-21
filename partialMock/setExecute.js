@@ -3,7 +3,8 @@ function setExecute(returnValue,hasCorrectArguments,mockContext,times) {
 	var trueNTimesThenFalse = require('../newTrueNTimesThenFalse')(times);
 	var newExecute = require('./newExecute');
 	var negotiateIncrementExpectCount = require('./negotiateIncrementExpectCount');
-
+	var emptyAnd = require('../newMutableAnd')();
+	
 	and = and.add(mockContext.compositeAreCorrectArguments);
 	and = and.add(trueNTimesThenFalse);
 	var lastExecute = mockContext.lastExecute;
@@ -11,6 +12,7 @@ function setExecute(returnValue,hasCorrectArguments,mockContext,times) {
 	mockContext.lastExecute = execute;
 	lastExecute.setFallback(execute);
 	negotiateIncrementExpectCount(times,mockContext);
+	mockContext.compositeAreCorrectArguments = emptyAnd;
 }
 
 module.exports = setExecute;
