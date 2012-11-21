@@ -362,18 +362,16 @@ function act(c) {
 	var createCounter = require('../counter');
 	c.sut = createCounter();
 }
-act._name = module.filename;
 module.exports = act;
 ```
 
 __counter_specs/when_new.js__
 
 ```
-var act = require('./new');
 var c = {}; //test context object
 var when = require('a').when;
 
-when(act, c). //set up
+when('./new', c). //set up
 	it('should be an object').
 		assertEqual('object', typeof c.sut)
 	it('should have value equal to zero').
@@ -389,7 +387,6 @@ __counter_specs/new/increment.js__
 function act(c) {
 	c.sut.increment();
 }
-act._name = module.filename;
 act.base = require('../new');
 module.exports = act;
 ```
@@ -397,11 +394,10 @@ module.exports = act;
 __counter_specs/new/when_incremented.js__
 
 ```
-var act = require('./increment');
 var c = {};
 var when = require('a').when;
 
-when(act, c).
+when('./increment', c).
 	it('should have value equal to 1').
 		assertEqual(1, c.sut.value);
 
