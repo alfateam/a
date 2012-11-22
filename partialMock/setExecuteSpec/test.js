@@ -6,9 +6,7 @@ var newTrueNTimesThenFalse = newRequireMock('../newTrueNTimesThenFalse');
 var and = newRequireMock('../and');
 var newExecute = newRequireMock('./newExecute');
 var negotiateIncrementExpectCount = newRequireMock('./negotiateIncrementExpectCount');
-var newMutableAnd = newRequireMock('../newMutableAnd')
-var mutableAnd = {};
-newMutableAnd.expect().return(mutableAnd);
+
 var sut = require('../setExecute');
 
 describe('setExecute', function(){
@@ -82,11 +80,6 @@ describe('setExecute', function(){
 
 	it('should negotiateIncrementExpectCount',function() {
 		assert.ok(didNegotiateIncrementExpectCount);
-	});
-
-
-	it('should set mockContext.compositeAreCorrectArguments to empty mutable And',function() {
-		assert.equal(mutableAnd,mockContext.compositeAreCorrectArguments);
 	});
 
 });

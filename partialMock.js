@@ -1,3 +1,5 @@
+
+
 function create(originalFunc) {
 	var newMockContext = require('./partialMock/newMockContext');
 	var expect = require('./partialMock/expect');
@@ -5,7 +7,9 @@ function create(originalFunc) {
 	var expectArray = require('./partialMock/expectArray');
 	var verify = require('./partialMock/verify');
 	var expectEmpty = require('./partialMock/expectEmpty');
+	var newEmptyAnd = require('./newMutableAnd');		
 	var mockContext = newMockContext(originalFunc);
+	
 
 	function mock() {
 		var nothing;
@@ -14,6 +18,7 @@ function create(originalFunc) {
 	}
 
 	mock.expect = function() {
+		mockContext.compositeAreCorrectArguments = newEmptyAnd();
 		if (arguments.length == 0)
 			return expectEmpty(mockContext);
 		var args = [0,mockContext];
@@ -24,16 +29,18 @@ function create(originalFunc) {
 	};
 
 	mock.expectAnything = function() {
+		mockContext.compositeAreCorrectArguments = newEmptyAnd();
 		var args  = [0,mockContext];
 		return expectAnything.apply(null,args);
 	};
 
-	mock.verify = function() {
+	mock.verify = function() {		
 		var args = [mockContext];
 		return verify.apply(null,args);
 	};
 
 	mock.expectArray = function(array) {
+		mockContext.compositeAreCorrectArguments = newEmptyAnd();
 		var args = [0,mockContext,array];
 		return expectArray.apply(null,args);
 	}
