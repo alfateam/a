@@ -387,7 +387,7 @@ __counter_specs/new/increment.js__
 function act(c) {
 	c.sut.increment();
 }
-act.base = require('../new');
+act.base = '../new';
 module.exports = act;
 ```
 
