@@ -1,11 +1,8 @@
 function _new(predicate,predicate2) {
 	var newBinaryAnd = require('./newBinaryAnd');
-	var binaryResult = require('./binaryResult');
 
 	function binaryAnd() {
-		var result1 = predicate.apply(null,arguments);
-		var result2 = predicate2.apply(null,arguments);
-		return binaryResult(result1,result2);s
+		return predicate.apply(null,arguments) && predicate2.apply(null,arguments);
 	}
 
 	binaryAnd.add = function() {

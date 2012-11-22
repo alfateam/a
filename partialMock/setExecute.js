@@ -3,7 +3,7 @@ function setExecute(returnValue,hasCorrectArguments,mockContext,times) {
 	var trueNTimesThenFalse = require('../newTrueNTimesThenFalse')(times);
 	var newExecute = require('./newExecute');
 	var negotiateIncrementExpectCount = require('./negotiateIncrementExpectCount');
-
+	
 	and = and.add(mockContext.compositeAreCorrectArguments);
 	and = and.add(trueNTimesThenFalse);
 	var lastExecute = mockContext.lastExecute;

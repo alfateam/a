@@ -1,6 +1,5 @@
 var assert = require('assert');
 var newMock = require('../partialMock/simple/newMock');
-
 var newSut = require('../partialMock');
 
 var fallbackValue = 'fallbackValue';
@@ -12,6 +11,57 @@ function fallback(arg,arg2)
 }
 
 describe('partialMock', function(){
+
+	it('should return expected given stubbed twice with repeat',function() {
+		var arg = 'a';
+		var arg2 = 'b';
+		var expected = {};
+		var expected2 = expected;
+		var expected3 = {};
+		var sut = newSut(fallback);
+		sut.expect(arg).return(expected).repeat(2);
+		sut.expect(arg2).return(expected3);
+
+		var returned = sut(arg);				
+		var returned2 = sut(arg);
+		var returned3 = sut(arg2);				
+		var returned4 = sut(arg);
+
+		assert.equal(returned,expected);
+		assert.equal(returned2,expected2);
+		assert.equal(returned3,expected3);
+		assert.equal(returned4,fallbackValue);
+	});
+
+
+	it('should return expected given stubbed twice',function() {
+		var arg = 'a';
+		var arg2 = 'b';
+		var expected = {};
+		var expected2 = {};
+		var sut = newSut(fallback);
+		sut.expect(arg).return(expected);
+		sut.expect(arg2).return(expected2);
+		var returned = sut(arg);		
+		var returned2 = sut(arg2);
+		assert.equal(returned,expected);
+		assert.equal(returned2,expected2);
+	});
+
+	it('should return expected given stubbed twice and called unordered',function() {
+		var arg = 'a';
+		var arg2 = 'b';
+		var expected = {};
+		var expected2 = {};
+		var sut = newSut(fallback);
+		sut.expect(arg).return(expected);
+		sut.expect(arg2).return(expected2);
+		var returned2 = sut(arg2);
+		var returned = sut(arg);		
+		assert.equal(returned,expected);
+		assert.equal(returned2,expected2);
+	});
+
 
 	it('should return expected for correct arg',function() {
 		var arg = 'a';

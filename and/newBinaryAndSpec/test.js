@@ -3,7 +3,6 @@ var newRequireMock = require('../../partialMock/simple/newRequireMock');
 var newMock = require('../../partialMock/simple/newMock');
 
 var newBinaryAnd = newRequireMock('./newBinaryAnd');
-var binaryResult = newRequireMock('./binaryResult');
 var newSut = require('../newBinaryAnd');
 
 
@@ -12,21 +11,38 @@ describe('newBinaryAnd', function(){
 	var predicate2 = newMock();
 	var sut = newSut(predicate,predicate2);
 
-	describe('execute',function() {
+	describe('execute when predicate1 returns false',function() {
 		var arg = {};
-		var expected = {};
-		var predicate1Result = {};
-		var predicate2Result = {};
-		predicate.expect(arg).return(predicate1Result);
-		predicate2.expect(arg).return(predicate2Result)
-		binaryResult.expect(predicate1Result).expect(predicate2Result).return(expected);
-		
+		predicate.expect(arg).return(false);		
 		var returned = sut(arg);
 
-		it('returns expected',function() {
-			assert.equal(expected,returned);
+		it('returns false',function() {
+			assert.equal(false,returned);
 		});
 	});
+
+	describe('execute when predicate1 returns true, predicate2 returns false',function() {
+		var arg = {};
+		predicate.expect(arg).return(true);		
+		predicate2.expect(arg).return(false);		
+		var returned = sut(arg);
+
+		it('returns false',function() {
+			assert.equal(false,returned);
+		});
+	});
+
+	describe('execute when predicate1 returns true, predicate2 returns true',function() {
+		var arg = {};
+		predicate.expect(arg).return(true);		
+		predicate2.expect(arg).return(true);		
+		var returned = sut(arg);
+
+		it('returns false',function() {
+			assert.equal(true,returned);
+		});
+	});
+
 
 
 	describe('add',function() {

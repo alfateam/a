@@ -1,6 +1,6 @@
 {
   "name": "a",
-  "version": "0.1.8",
+  "version": "0.2.1",
   "main": "index.js",
   "title": "a",
   "description": "Mocking framework and test framework in compact when-style. With recursive test runner",
