@@ -36,8 +36,7 @@ var load_act = require('../load_act');
 		assert.strictEqual(returned, act);
 	});
 
-	test('it should set _name property of the returned object to act path', function() {
-		assert(returned._name === resolved_act_path);
+	test('it should set filename property to resolved path', function() {
+		assert(returned.filename === resolved_act_path);
 	});
-
 })();

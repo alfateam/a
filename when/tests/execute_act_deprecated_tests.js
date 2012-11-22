@@ -2,6 +2,7 @@ var assert = require('assert');
 var test = require('./test');
 var requireMock = require('../../requireMock');
 var mock = require('../../strictMock');
+
 var reporter = requireMock('./reporter');
 var load_act = requireMock('./load_act');
 
@@ -14,6 +15,7 @@ var load_act = requireMock('./load_act');
 	var c = {};
 	var c2 = {};
 	act.expect(c).return();
+
 
 	var sut = require('../execute_act');
 	var returned = sut(act,c);
@@ -29,34 +31,37 @@ var load_act = requireMock('./load_act');
 
 })();
 
-
-
 (function() {
 
-	console.log('when execute with path to base act');
-	var base_act_execute = requireMock('./execute_act');
+	console.log('when execute with loaded base act');
+	var nextExecute = requireMock('./execute_act');
 	var act = mock();
-
-	var base_path = '../base';
-	act.base = base_path;
+	var base = function() {};
+	act.base = base;
 	var c = {};
 	var c2 = {};
-
-	var base = function() {};
-	base_act_execute.expect(base,c).return(c2);
+	nextExecute.expect(base,c).return(c2);
 	act.expect(c2).return();
 
-	load_act.expect(act, base_path).return(base);
+	reporter.warn = mock();
+	reporter.warn.expect('deprecated: specify path to act.base instead of requiring it').return();
+
 
 	var sut = require('../execute_act');
 	var returned = sut(act,c);
+
+	test('it should show deprecation warning', function() {
+		assert(reporter.warn.verify());
+	});
 
 	test('it should execute act', function() {
 		assert(act.verify());
 	});
 
-	test('it should pass the context thru all the acts', function() {
-		assert.equal(returned, c2);
+	test('it should return context', function() {
+		assert.equal(returned,c2);
 	});
 
 })();
+
+

@@ -4,9 +4,9 @@ var separator = ' \u00bb ';
 function build_suite_name(act) {
 
 	var splitChar = '/';
-	if (act._name.indexOf('\\') > -1) 
+	if (act.filename.indexOf('\\') > -1)
 		splitChar = '\\';
-	var folderArray = act._name.split(splitChar);	
+	var folderArray = act.filename.split(splitChar);
 	folderArray.shift();
 	var shallowActName = actName();
 

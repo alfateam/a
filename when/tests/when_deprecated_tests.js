@@ -16,32 +16,31 @@ reporter.summary = summary;
 var it_module = requireMock('./it');
 it_module.it = it;
 
+
 (function() {
 
-	console.log('when called with act path');
+	console.log('when called');
 
 
 	var suite_title = 'suite title';
-	var act_path = 'act path';
 
 	reporter.suite = mock();
 	reporter.suite.expect(suite_title).return();
 
+	reporter.warn = mock();
+	reporter.warn.expect('deprecated: use path to act instead of loading it yourself').return();
+
 	var suite_name_builder = requireMock('./suite_name_builder');
 	suite_name_builder.expect(act).return(suite_title);
 
-	module.parent = {};
-
-	var load_act = requireMock('./load_act');
-	load_act.expect(module.parent, act_path).return(act);
-
-	var execute_act = requireMock('./execute_act');
+	var execute_act  = requireMock('./execute_act');
 	execute_act.expect(act, c).return();
 
 	var when = require('../when');
-	var returned = when(act_path, c);
+	var returned = when(act, c);
 
-	test('it should execute loaded act with given context', function() {
+
+	test('it should execute act with given context', function() {
 		assert(execute_act.verify());
 	});
 
@@ -53,8 +52,13 @@ it_module.it = it;
 		assert(reporter.suite.verify());
 	});
 
+	test('it should show deprecation message', function() {
+		assert(reporter.warn.verify());
+	});
+
 	test('it should have summary property from reporter', function() {
 		assert(when.summary === summary);
 	});
 
 })();
+

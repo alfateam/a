@@ -9,17 +9,17 @@ var returned;
 
 (function() {
 
-	act._name = '/path/spec/givenA/givenB/act.js';
+	act.filename = '/path/spec/givenA/givenB/act.js';
 	returned = sut(act);
-	
+
 	console.log('when building');
 	test('returns folder names separated with right_quotes up to spec folder', function() {
 		assert.equal('spec » givenA » givenB » act', returned);
 	});
 
-	act._name = '\\path\\spec\\givenA\\givenB\\act.js';
+	act.filename = '\\path\\spec\\givenA\\givenB\\act.js';
 	returned = sut(act);
-	
+
 	console.log('when building on windows');
 	test('returns folder names separated with right_quotes up to spec folder', function() {
 		assert.equal('spec » givenA » givenB » act', returned);
