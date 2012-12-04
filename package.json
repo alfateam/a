@@ -1,19 +1,19 @@
 {
   "name": "a",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "index.js",
   "title": "a",
   "description": "Mocking framework and test framework in compact when-style. With recursive test runner",
   "keywords": ["mock","mocking","partial mock","strict mock","tdd","bdd","test runner","stub","stubbing","mock require","verify"],
   "dependencies": {
-		"glob": "> =3.1.10",
-		"mocha": ">=1.1.0"
+		"a_mock": "0.0.1",
+		"a_test": "0.0.2"
   },
   "repository" : {
          "type" : "git",
          "url"  : "git@github.com:alfateam/a.git"
       },
   "bin": {
-    "when": "./when/bin/rt.js"
+    "when": "./node_modules/a_test/bin/rt.js"
   }
 }

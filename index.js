@@ -1,12 +1,17 @@
-(function avoid_caching_when_module() {
+(function avoid_caching() {
 	delete require.cache[module.id];
-	delete require.cache[require.resolve('./when/when')];
 })();
 
+var _when = require('a_test').when;
+_when.parentCount++;
+
+var a_mock = require('a_mock');
+
+
 module.exports = {
-	when: require('./when/when'),
-	mock: require('./mock'),
-	expectRequire: require('./expectRequire'),
-	requireMock: require('./requireMock')
+	when: _when,
+	mock: a_mock.mock,
+	expectRequire: a_mock.expectRequire,
+	requireMock: a_mock.requireMock
 };
 
