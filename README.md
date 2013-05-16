@@ -225,6 +225,41 @@ original('testValue2'); //returns 'fake2'
 mock.verify(); //returns true
 ```
 
+__strict mock - returning void (compact syntax)__
+
+```
+var original = function(arg) {
+	return 'realValue';
+}
+
+var mock = require('a').mock();
+original = mock;
+mock.expect('testValue1');
+mock.expect('testValue2').repeat(2);
+
+original('testValue1'); //returns undefined
+original('testValue2'); //returns undefined
+original('testValue2'); //returns undefined
+mock.verify(); //returns true
+```
+
+__..is equivalent to ..__
+```
+var original = function(arg) {
+	return 'realValue';
+}
+
+var mock = require('a').mock();
+original = mock;
+mock.expect('testValue1').return();
+mock.expect('testValue2').return().repeat(2);
+
+original('testValue1'); //returns undefined
+original('testValue2'); //returns undefined
+original('testValue2'); //returns undefined
+mock.verify(); //returns true
+```
+
 
 __strict mock - advanced scenario__
 
