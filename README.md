@@ -492,13 +492,13 @@ In demo directory run _when_
 
 Release Notes
 ---------------
-__0.3.0__ 
-expectArray is deprecated, use expect instead.
+__0.3.0__  
+expectArray is deprecated, use expect instead.  
 expect now handles structs - equality is acheived when same propertyNames and equal leaf properties.
 
-__0.2.9__ 
-"When" can resolve act by convention. If test class is named "when_foo.js", it will assume "foo.js" is the act.
-Example, given when_foo.js:
+__0.2.9__   
+"When" can resolve act by convention. If test class is named "when_foo.js", it will assume "foo.js" is the act.  
+Example, given when_foo.js:  
 ```
 var c = {};
 var when = require('a').when;
