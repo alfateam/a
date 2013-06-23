@@ -133,12 +133,12 @@ var mock = require('a').mock(original);
 original = mock;
 mock.expect({a : 1}).return('fake1');
 mock.expect({a : 2}).return('fake2');
-mock.expect({a : 2, {b : 'foo', c : ['me', 'too']}}).return('fake3');
+mock.expect({a : 2, b : {c : 'foo', d : ['me', 'too']}}).return('fake3');
 
 original({a : 'x'}); //throws unexpected arguments
 original({a : 1}); //returns 'fake1'
 original({a : 2}); //returns 'fake2'
-original({a : 2, {b : 'foo', c : ['me', 'too']}}); //returns 'fake3'
+original({a : 2, b : {c : 'foo', d : ['me', 'too']}}); //returns 'fake3'
 ```
 
 __strict mock with repeats__
