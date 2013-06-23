@@ -1,9 +1,8 @@
 (function avoid_caching() {
 	delete require.cache[module.id];
 })();
-
-var _when = require('a_test').when;
-_when.parentCount++;
+var calling_module = module.parent;
+var _when = require('a_test').load(calling_module);
 
 var a_mock = require('a_mock');
 
