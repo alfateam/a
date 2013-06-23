@@ -125,6 +125,10 @@ original(['foo', 'bar']); //throws unexpected arguments
 __strict mock expecting struct__
 
 ```
+var original = function(array) {
+	return 'realValue';
+}
+
 var mock = require('a').mock(original);
 original = mock;
 mock.expect({a : 1}).return('fake1');
@@ -486,18 +490,13 @@ In demo directory run _when_
 
 	suites: 2, passed: 3, failed: 1
 
-
-
-
-_Release notes_
-===================
-0.3.0 
-------------------
+Release Notes
+---------------
+__0.3.0__ 
 expectArray is deprecated, use expect instead.
 expect now handles structs - equality is acheived when same propertyNames and equal leaf properties.
 
-0.2.9 
-------------------
+__0.2.9__ 
 "When" can resolve act by convention. If test class is named "when_foo.js", it will assume "foo.js" is the act.
 Example, given when_foo.js:
 ```
