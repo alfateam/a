@@ -111,9 +111,9 @@ var original = function(array) {
 
 var mock = require('a').mock();
 original = mock;
-mock.expectArray(['a','b']).return('fake1');
-mock.expectArray(['a','b').return('fake2');
-mock.expectArray(['c','d').return('fake3');
+mock.expect(['a','b']).return('fake1');
+mock.expect(['a','b').return('fake2');
+mock.expect(['c','d').return('fake3');
 
 original(['a','b']); //returns 'fake1'
 original(['a','b']); //returns 'fake2'
@@ -122,6 +122,20 @@ original(['a','b']); //throws unexpected arguments
 original(['foo', 'bar']); //throws unexpected arguments
 ```
 
+__strict mock expecting struct__
+
+```
+var mock = require('a').mock(original);
+original = mock;
+mock.expect({a : 1}).return('fake1');
+mock.expect({a : 2}).return('fake2');
+mock.expect({a : 2, {b : 'foo', c : ['me', 'too']}}).return('fake3');
+
+original({a : 'x'}); //throws unexpected arguments
+original({a : 1}); //returns 'fake1'
+original({a : 2}); //returns 'fake2'
+original({a : 2, {b : 'foo', c : ['me', 'too']}}); //returns 'fake3'
+```
 
 __strict mock with repeats__
 
@@ -472,3 +486,26 @@ In demo directory run _when_
 
 	suites: 2, passed: 3, failed: 1
 
+
+
+
+_Release notes_
+===================
+0.3.0 
+------------------
+expectArray is deprecated, use expect instead.
+expect now handles structs - equality is acheived when same propertyNames and equal leaf properties.
+
+0.2.9 
+------------------
+"When" can resolve act by convention. If test class is named "when_foo.js", it will assume "foo.js" is the act.
+Example, given when_foo.js:
+```
+var c = {};
+var when = require('a').when;
+
+when(c). //equivalent to: when('./foo',c)....
+	it('should have value equal to 1').
+		assertEqual(1, c.sut.value);
+
+```
