@@ -510,8 +510,8 @@ In demo directory run _when_
 Release Notes
 ---------------
 __0.3.1__  
-"when" deletes all cached modules before executing. This ensures tests are isolated.
-ignore is alias for expectAnything.
+"when" deletes all cached modules before executing. This ensures tests are isolated.  
+ignore is alias for expectAnything.  
 "When" can resolve act by camcelCase convention. If test class is named "whenFoo.js", it will assume "foo.js" is the act.  
 
 __0.3.0__  
