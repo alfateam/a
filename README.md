@@ -134,11 +134,13 @@ original = mock;
 mock.expect({a : 1}).return('fake1');
 mock.expect({a : 2}).return('fake2');
 mock.expect({a : 2, b : {c : 'foo', d : ['me', 'too']}}).return('fake3');
+mock.expect({}).return('will never happen');
 
 original({a : 'x'}); //throws unexpected arguments
 original({a : 1}); //returns 'fake1'
 original({a : 2}); //returns 'fake2'
 original({a : 2, b : {c : 'foo', d : ['me', 'too']}}); //returns 'fake3'
+original({});  //throws unexpected arguments
 ```
 
 __strict mock with repeats__
@@ -184,6 +186,21 @@ var original = function(arg) {
 var mock = require('a').mock();
 original = mock;
 mock.expectAnything().return('fake1');
+
+original('someRandomValue'); //returns 'fake1'
+original(); //throws unexpected arguments
+```
+
+__strict mock ignore (alias: expectAnything)__
+
+```
+var original = function(arg) {
+	return 'realValue';
+}
+
+var mock = require('a').mock();
+original = mock;
+mock.ignore().return('fake1'); //same as expectAnything
 
 original('someRandomValue'); //returns 'fake1'
 original(); //throws unexpected arguments
@@ -492,6 +509,11 @@ In demo directory run _when_
 
 Release Notes
 ---------------
+__0.3.1__  
+"when" deletes all cached modules before executing. This ensures tests are isolated.
+ignore is alias for expectAnything.
+"When" can resolve act by camcelCase convention. If test class is named "whenFoo.js", it will assume "foo.js" is the act.  
+
 __0.3.0__  
 expectArray is deprecated, use expect instead.  
 expect now handles structs - equality is acheived when same propertyNames and equal leaf properties.
