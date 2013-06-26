@@ -49,249 +49,193 @@ original(); //returns 'realValue'
 __strict mock__
 
 ```
-var original = function() {
-	return 'realValue';
-}
-
 var mock = require('a').mock();
-original = mock;
 mock.expect().return('fake');
 
-original(); //returns 'fake'
-original(); //throws unexpected arguments
+mock(); //returns 'fake'
+mock(); //throws unexpected arguments
 ```
 
 
 
-__strict mock with arguments__
+__expecting arguments__
 
 ```
-var original = function(arg) {
-	return 'realValue';
-}
-
 var mock = require('a').mock();
-original = mock;
 mock.expect('testValue1').return('fake1');
 mock.expect('testValue2').return('fake2');
 
-original('testValue1'); //returns 'fake1'
-original('testValue2'); //returns 'fake2'
-original(); //throws unexpected arguments
-original('foo'); //throws unexpected arguments
+mock('testValue1'); //returns 'fake1'
+mock('testValue2'); //returns 'fake2'
+mock(); //throws unexpected arguments
+mock('foo'); //throws unexpected arguments
 ```
 
 
 
-__strict mock with multiple arguments__
+__expecting multiple arguments__
 
 ```
-var original = function(arg1, arg2) {
-	return 'realValue';
-}
-
 var mock = require('a').mock();
-original = mock;
 mock.expect('firstArg1', 'secondArg1').return('fake1');
 mock.expect('firstArg2', 'secondArg2').return('fake2');
 
 
-original('firstArg1', 'secondArg1'); //returns 'fake1'
-original('firstArg2', 'secondArg2'); //returns 'fake2'
-original('foo'); //throws unexpected arguments
-original('foo', 'bar'); //throws unexpected arguments
+mock('firstArg1', 'secondArg1'); //returns 'fake1'
+mock('firstArg2', 'secondArg2'); //returns 'fake2'
+mock('foo'); //throws unexpected arguments
+mock('foo', 'bar'); //throws unexpected arguments
 ```
 
-__strict mock expecting array__
+__expecting array__
 
 ```
-var original = function(array) {
-	return 'realValue';
-}
-
 var mock = require('a').mock();
-original = mock;
 mock.expect(['a','b']).return('fake1');
 mock.expect(['a','b').return('fake2');
 mock.expect(['c','d').return('fake3');
 
-original(['a','b']); //returns 'fake1'
-original(['a','b']); //returns 'fake2'
-original(['c','d']); //returns 'fake3'
-original(['a','b']); //throws unexpected arguments
-original(['foo', 'bar']); //throws unexpected arguments
+mock(['a','b']); //returns 'fake1'
+mock(['a','b']); //returns 'fake2'
+mock(['c','d']); //returns 'fake3'
+mock(['a','b']); //throws unexpected arguments
+mock(['foo', 'bar']); //throws unexpected arguments
 ```
 
-__strict mock expecting struct__
+__expecting struct__
 
 ```
-var original = function(array) {
-	return 'realValue';
-}
-
 var mock = require('a').mock(original);
-original = mock;
+var obj = {};
 mock.expect({a : 1}).return('fake1');
 mock.expect({a : 2}).return('fake2');
 mock.expect({a : 2, b : {c : 'foo', d : ['me', 'too']}}).return('fake3');
+mock.expect(obj).return('fake4');
 mock.expect({}).return('will never happen');
 
-original({a : 'x'}); //throws unexpected arguments
-original({a : 1}); //returns 'fake1'
-original({a : 2}); //returns 'fake2'
-original({a : 2, b : {c : 'foo', d : ['me', 'too']}}); //returns 'fake3'
-original({});  //throws unexpected arguments
+mock({a : 'x'}); //throws unexpected arguments
+mock({a : 1}); //returns 'fake1'
+mock({a : 2}); //returns 'fake2'
+mock({a : 2, b : {c : 'foo', d : ['me', 'too']}}); //returns 'fake3'
+mock(obj);  //returns 'fake3'
+mock({});  //throws unexpected arguments
 ```
 
-__strict mock with repeats__
+__repeats__
 
 ```
-var original = function() {
-	return 'realValue';
-}
-
 var mock = require('a').mock();
-original = mock;
 mock.expect().return('fake').repeat(2);
 
-original(); //returns 'fake'
-original(); //returns 'fake'
-original(); //throws unexpected arguments
+mock(); //returns 'fake'
+mock(); //returns 'fake'
+mock(); //throws unexpected arguments
 ```
 
-__strict mock with infinite repeats__
+__infinite repeats__
 
 ```
-var original = function() {
-	return 'realValue';
-}
-
 var mock = require('a').mock();
-original = mock;
 mock.expect().return('fake').repeatAny();
 
-original(); //returns 'fake'
-original(); //returns 'fake'
-original(); //returns 'fake'...
+mock(); //returns 'fake'
+mock(); //returns 'fake'
+mock(); //returns 'fake'...
 ```
 
 
-__strict mock ignoring arguments__
+__ignoring arguments__
 
 ```
-var original = function(arg) {
-	return 'realValue';
-}
-
 var mock = require('a').mock();
-original = mock;
 mock.expectAnything().return('fake1');
 
-original('someRandomValue'); //returns 'fake1'
-original(); //throws unexpected arguments
+mock('someRandomValue'); //returns 'fake1'
+mock(); //throws unexpected arguments
 ```
 
-__strict mock ignore (alias: expectAnything)__
+__ignore alias__
 
 ```
-var original = function(arg) {
-	return 'realValue';
-}
-
 var mock = require('a').mock();
-original = mock;
 mock.ignore().return('fake1'); //same as expectAnything
 
-original('someRandomValue'); //returns 'fake1'
-original(); //throws unexpected arguments
+mock('someRandomValue'); //returns 'fake1'
+mock(); //throws unexpected arguments
 ```
 
 
-
-__strict mock with interceptor__
+__throwing exceptions__
 
 ```
-var original = function(arg) {
-	return 'realValue';
-}
-
 var mock = require('a').mock();
-original = mock;
+var error = new Error('invalid operation');
+mock.expect().throw(error);
+mock.expect().return('fake');
+
+mock(); //throws error
+mock(); //returns 'fake'
+```
+
+__intercepting__
+
+```
+var mock = require('a').mock();
 mock.expect('testValue').whenCalled(onCalled).return('fake1');
 
 function onCalled(arg) {
 	//arg == 'testValue'
 }
 
-original('testValue'); //returns 'fake1'
-original(); //throws unexpected arguments
+mock('testValue'); //returns 'fake1'
+mock(); //throws unexpected arguments
 ```
 
-__strict mock - verify (fail)__
+__verify (fail)__
 
 ```
-var original = function(arg) {
-	return 'realValue';
-}
-
 var mock = require('a').mock();
-original = mock;
 mock.expect('testValue1').return('fake1');
 mock.expect('testValue2').return('fake2');
 
-original('testValue1'); //returns 'fake1'
+mock('testValue1'); //returns 'fake1'
 mock.verify(); //throws mock has 1 pending functions
 ```
 
-__strict mock - verify (success)__
+__verify (success)__
 
 ```
-var original = function(arg) {
-	return 'realValue';
-}
-
 var mock = require('a').mock();
-original = mock;
 mock.expect('testValue1').return('fake1');
 mock.expect('testValue2').return('fake2');
 
-original('testValue1'); //returns 'fake1'
-original('testValue2'); //returns 'fake2'
+mock('testValue1'); //returns 'fake1'
+mock('testValue2'); //returns 'fake2'
 mock.verify(); //returns true
 ```
 
-__strict mock - returning void (compact syntax)__
+__returning void (compact syntax)__
 
 ```
-var original = function(arg) {
-	return 'realValue';
-}
-
 var mock = require('a').mock();
-original = mock;
 mock.expect('testValue1');
 mock.expect('testValue2').repeat(2);
 
-original('testValue1'); //returns undefined
-original('testValue2'); //returns undefined
-original('testValue2'); //returns undefined
+mock('testValue1'); //returns undefined
+mock('testValue2'); //returns undefined
+mock('testValue2'); //returns undefined
 mock.verify(); //returns true
 ```
 
 __..is equivalent to ..__
 ```
-var original = function(arg) {
-	return 'realValue';
-}
-
 var mock = require('a').mock();
-original = mock;
 mock.expect('testValue1').return();
 mock.expect('testValue2').return().repeat(2);
 
-original('testValue1'); //returns undefined
-original('testValue2'); //returns undefined
-original('testValue2'); //returns undefined
+mock('testValue1'); //returns undefined
+mock('testValue2'); //returns undefined
+mock('testValue2'); //returns undefined
 mock.verify(); //returns true
 ```
 
@@ -299,13 +243,8 @@ mock.verify(); //returns true
 __strict mock - advanced scenario__
 
 ```
-var original = function(arg, callback) {
-	return 'realValue';
-}
-
 var mock = require('a').mock();
-original = mock;
-mock.expect('testValue').expectAnything().whenCalled(onCalled).return('fake1');
+mock.expect('testValue').ignore().whenCalled(onCalled).return('fake1');
 
 function onCalled(arg,callback) {
 	//arg == 'testValue'
@@ -316,9 +255,9 @@ function foo() {
 }
 
 
-original('testValue', foo); //returns 'fake1'
+mock('testValue', foo); //returns 'fake1'
 mock.verify() //returns true
-original('testValue',foo); //throws unexpected arguments
+mock('testValue',foo); //throws unexpected arguments
 ```
 
 Mocking require 
@@ -509,6 +448,8 @@ In demo directory run _when_
 
 Release Notes
 ---------------
+__0.3.2__  
+Mocks can be set up to throw.  
 __0.3.1__  
 "when" deletes all cached modules before executing. This ensures tests are isolated.  
 ignore is alias for expectAnything.  
