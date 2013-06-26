@@ -448,6 +448,8 @@ In demo directory run _when_
 
 Release Notes
 ---------------
+__0.3.3__  
+Error in documentation about structs.
 __0.3.2__  
 Mocks can be set up to throw.  
 __0.3.1__  
