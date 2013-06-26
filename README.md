@@ -105,7 +105,7 @@ mock(['foo', 'bar']); //throws unexpected arguments
 __expecting struct__
 
 ```
-var mock = require('a').mock(original);
+var mock = require('a').mock();
 var obj = {};
 mock.expect({a : 1}).return('fake1');
 mock.expect({a : 2}).return('fake2');
