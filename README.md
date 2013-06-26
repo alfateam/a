@@ -448,8 +448,10 @@ In demo directory run _when_
 
 Release Notes
 ---------------
+__0.3.4__  
+Cache was cleared at wrong time. This could lead to overflow when running large amount of tests.  
 __0.3.3__  
-Error in documentation about structs.
+Error in documentation about structs.  s
 __0.3.2__  
 Mocks can be set up to throw.  
 __0.3.1__  
