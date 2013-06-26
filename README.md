@@ -450,6 +450,7 @@ Release Notes
 ---------------
 __0.3.4__  
 Cache was cleared at wrong time. This could lead to overflow when running large amount of tests.  
+Make sure you update globally (npm update a -g) to get this fix, not only the local dependency.  
 __0.3.3__  
 Error in documentation about structs.  
 __0.3.2__  
