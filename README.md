@@ -448,6 +448,8 @@ In demo directory run _when_
 
 Release Notes
 ---------------
+__0.3.5__  
+Tests files are run in hierarchical order from top to bottom.  
 __0.3.4__  
 Cache was cleared at wrong time. This could lead to overflow when running large amount of tests.  
 Make sure you update globally (npm update a -g) to get this fix, not only the local dependency.  

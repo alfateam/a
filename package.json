@@ -1,13 +1,13 @@
 {
   "name": "a",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "main": "index.js",
   "title": "a",
   "description": "Mocking framework and test framework in compact when-style. With recursive test runner",
   "keywords": ["mock","mocking","partial mock","strict mock","tdd","bdd","test runner","stub","stubbing","mock require","verify","unit test"],
   "dependencies": {
 		"a_mock": "0.0.7",
-		"a_test": "0.0.7"
+		"a_test": "0.0.8"
   },
   "repository" : {
          "type" : "git",
