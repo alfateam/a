@@ -448,6 +448,8 @@ In demo directory run _when_
 
 Release Notes
 ---------------
+__0.3.6__  
+Exit code is equal to number of failing tests.  
 __0.3.5__  
 Tests files are run in hierarchical order from top to bottom.  
 __0.3.4__  
