@@ -448,6 +448,10 @@ In demo directory run _when_
 
 Release Notes
 ---------------
+__0.3.7__  
+Test path can be sent as argument to test runner.  
+If no path is specified, the test runner will run from current directory.
+Example: ```when c:/devel/foo/testFolder```  
 __0.3.6__  
 Exit code is equal to number of failing tests.  
 __0.3.5__  
