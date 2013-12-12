@@ -448,6 +448,8 @@ In demo directory run _when_
 
 Release Notes
 ---------------
+__0.3.8__  
+Cleaner stack trace on mock errors.  
 __0.3.7__  
 Test path can be sent as argument to test runner.  
 If no path is specified, the test runner will run from current directory.  
