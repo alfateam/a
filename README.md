@@ -448,8 +448,10 @@ In demo directory run _when_
 
 Release Notes
 ---------------
-__0.3.9__  
+__0.4.0__  
 Cleaner output on failed assertions.  
+__0.3.9__  
+Can inherit act by convention. See examples in [demo](https://github.com/alfateam/a_demo).  
 __0.3.8__  
 Cleaner stack trace on mock errors.  
 __0.3.7__  
