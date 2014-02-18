@@ -449,12 +449,12 @@ In demo directory run _when_
 Release Notes
 ---------------
 __0.4.1__  
-"When" can accept function instead of separate act file. See example in [demo][1] repo.  
+"When" can accept function instead of separate act file. See example in [demo][1] repo.
 [1]:https://github.com/alfateam/a_demo/blob/master/assert_specs/when_assertions.js
 __0.4.0__  
 Cleaner output on failed assertions.  
 __0.3.9__  
-Can inherit act by convention. See examples in [demo][0] repo.  
+Can inherit act by convention. See examples in [demo][0] repo.
 [0]:https://github.com/alfateam/a_demo
 __0.3.8__  
 Cleaner stack trace on mock errors.  
