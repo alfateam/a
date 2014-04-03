@@ -239,6 +239,20 @@ mock('testValue2'); //returns undefined
 mock.verify(); //returns true
 ```
 
+__reset mock__
+```
+var original = function() {
+	return 'realValue';
+}
+
+var mock = require('a').mock(original);
+original = mock;
+mock.expect().return('fake');
+mock.reset();
+
+original(); //returns 'realValue'
+```
+
 
 __strict mock - advanced scenario__
 
@@ -298,7 +312,7 @@ require('./realDep'); //returns fakeDep
 require('./realDep'); //returns realDep
 ```
 
-__clearing mocks__
+__reset mocks for require__
 
 ```
 var fakeDep = {};
@@ -470,6 +484,11 @@ In demo directory run _when_
 
 Release Notes
 ---------------
+__0.4.2__  
+Can reset expectations on mocks by mock.reset.  
+Renamed expectRequire.clear to expectRequire.reset. Same goes for for requireMock.  
+__0.4.2__  
+Can clear expectations on require by using expectRequire.clear.  
 __0.4.1__  
 "When" can accept function instead of separate act file. See example in [demo][1] repo.  
 __0.4.0__  
