@@ -484,7 +484,7 @@ In demo directory run _when_
 
 Release Notes
 ---------------
-__0.4.2__  
+__0.4.3__  
 Can reset expectations on mocks by mock.reset.  
 Renamed expectRequire.clear to expectRequire.reset. Same goes for for requireMock.  
 __0.4.2__  
