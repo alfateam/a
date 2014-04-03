@@ -319,7 +319,7 @@ var fakeDep = {};
 
 var expectRequire = require('a').expectRequire;
 expectRequire('./realDep').return(fakeDep);
-expectRequire.clear();
+expectRequire.reset();
 
 require('./realDep'); //returns realDep
 ```
@@ -329,7 +329,7 @@ __..is equivalent to ..__
 ```
 var requireMock = require('a').requireMock;
 var fakeDep = requireMock('./realDep'); //returns a strict mock
-requireMock.clear(); //is an alias for expectRequire.clear()
+requireMock.reset(); //is an alias for expectRequire.reset()
 
 require('./realDep'); //returns realDep
 
