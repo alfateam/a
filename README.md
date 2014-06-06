@@ -360,6 +360,83 @@ customer.getName(); //returns Alfonzo The Real
 customerMock.verify(); //returns true
 ```
 
+Mocking promises
+-----------------
+__mocking resolve__
+
+```
+var a = require('a');
+
+var promise = a.then(); //mocked promise
+
+promise.then(success,error);
+promise.resolve('success');
+
+function success(arg) {
+	console.log(arg);//success
+}
+
+function error(e) {
+	//will not happen
+}
+```
+
+__mocking resolve (alternative syntax)__
+
+```
+var a = require('a');
+
+var promise = a.then(); //mocked promise
+
+promise.then(success,error);
+promise('success');
+
+function success(arg) {
+	console.log(arg);//success
+}
+
+function error(e) {
+	//will not happen
+}
+```
+
+__mocking reject__
+
+```
+var a = require('a');
+
+var promise = a.then();
+
+promise.then(success,error);
+promise.reject(new Error('error'));
+
+function success(arg) {
+	//will not happen
+}
+
+function error(e) {
+	console.log(e.stack);//will happen
+}
+```
+
+__mocking reject (alternative syntax)__
+
+```
+var a = require('a');
+
+var promise = a.then();
+
+promise.then(success,error);
+promise(null,new Error('error'));
+
+function success(arg) {
+	//will not happen
+}
+
+function error(e) {
+	console.log(e.stack);//will happen
+}
+```
 
 _A test framework_
 ===================
@@ -484,6 +561,10 @@ In demo directory run _when_
 
 Release Notes
 ---------------
+__0.4.4__  
+Introduced promise mocks.  
+Tests with failing setup are reported as inconclusive.  
+Bugfix: Test names no longer converted to lowercase.  
 __0.4.3__  
 Can reset expectations on mocks by mock.reset.  
 Renamed expectRequire.clear to expectRequire.reset. Same goes for for requireMock.  
