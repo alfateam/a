@@ -563,7 +563,7 @@ Release Notes
 ---------------
 __0.4.5__  
 Display stack trace of inconclusive suites.  
-Use dependency deferred instead of promise.  
+Use dependency [deferred][https://www.npmjs.org/package/deferred] instead of [promise][https://www.npmjs.org/package/promise].  
 __0.4.4__  
 Introduced promise mocks.  
 Tests with failing setup are reported as inconclusive.  
