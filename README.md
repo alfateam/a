@@ -563,7 +563,7 @@ Release Notes
 ---------------
 __0.4.5__  
 Display stack trace of inconclusive suites.  
-Use dependency [deferred][https://www.npmjs.org/package/deferred] instead of [promise][https://www.npmjs.org/package/promise].  
+Use dependency [deferred][2] instead of [promise][3].  
 __0.4.4__  
 Introduced promise mocks.  
 Tests with failing setup are reported as inconclusive.  
@@ -619,3 +619,5 @@ when(c). //equivalent to: when('./foo',c)....
 ```
 [0]:https://github.com/alfateam/a_demo
 [1]:https://github.com/alfateam/a_demo/blob/master/assert_specs/when_assertions.js
+[2]:https://www.npmjs.org/package/deferred
+[3]:https://www.npmjs.org/package/promise
