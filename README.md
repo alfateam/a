@@ -561,6 +561,9 @@ In demo directory run _when_
 
 Release Notes
 ---------------
+__0.4.5__  
+Display stack trace of inconclusive suites.  
+Use dependency deferred instead of promise.  
 __0.4.4__  
 Introduced promise mocks.  
 Tests with failing setup are reported as inconclusive.  
