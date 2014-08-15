@@ -561,6 +561,8 @@ In demo directory run _when_
 
 Release Notes
 ---------------
+__0.4.6__  
+Fixed memory leak in test runner.  
 __0.4.5__  
 Display stack trace of inconclusive suites.  
 Use dependency [deferred][2] instead of [promise][3].  
