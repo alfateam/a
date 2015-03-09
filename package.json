@@ -1,6 +1,6 @@
 {
   "name": "a",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "main": "index.js",
   "title": "a",
   "description": "Mocking framework and test framework in compact when-style. With recursive test runner",
@@ -14,6 +14,7 @@
          "url"  : "git@github.com:alfateam/a.git"
       },
   "bin": {
-    "when": "./node_modules/a_test/bin/rt.js"
+    "when": "./node_modules/a_test/bin/rt.js",
+    "a": "./node_modules/a_test/bin/a.js"
   }
 }
