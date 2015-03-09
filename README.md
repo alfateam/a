@@ -561,6 +561,9 @@ In demo directory run _when_
 
 Release Notes
 ---------------
+__0.4.7__  
+Executable test runner "when" is deprecated. Use "a" instead.  
+Inconclusive tests are accounted as failed in exit code.  
 __0.4.6__  
 Fixed memory leak in test runner.  
 __0.4.5__  
