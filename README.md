@@ -451,7 +451,7 @@ Examples below can be found here: https://github.com/alfateam/a_demo
 
 Example
 ---------
-The test runner ( _when_ ) will search for all files named when*.js in current directory and below.
+The test runner ( _a_ ) will search for all files named when*.js in current directory and below.
 
 Given the following file structure
 
@@ -525,9 +525,9 @@ when('./increment', c).
 
 ```
 
-In demo directory run _when_
+In demo directory run _a_
 	
-	user@localhost:~/a_demo $ when
+	user@localhost:~/a_demo $ a
 
 	 » counter_specs » new
 	
