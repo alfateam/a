@@ -148,7 +148,7 @@ __ignoring a single argument__
 
 ```
 var mock = require('a').mock();
-mock.ignore().expect('foo).return('fake1');
+mock.ignore().expect('foo').return('fake1');
 
 mock('ignore me', 'foo'); //returns 'fake1'
 mock(); //throws unexpected arguments
