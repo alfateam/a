@@ -561,6 +561,8 @@ In demo directory run _a_
 
 Release Notes
 ---------------
+__1.0.1__  
+ExpectAnything() can be nested - for backwards compatability only.  
 __1.0.0__  
 ExpectAnything() no longer expects only one argument, but arbitary number of arguments. Use ignore() if you want to ignore a single argument.  
 __0.4.8__  
