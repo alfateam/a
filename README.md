@@ -144,23 +144,23 @@ mock(); //returns 'fake'...
 ```
 
 
-__ignoring arguments__
+__ignoring a single argument__
 
 ```
 var mock = require('a').mock();
-mock.expectAnything().return('fake1');
+mock.ignore().expect('foo).return('fake1');
 
-mock('someRandomValue'); //returns 'fake1'
+mock('ignore me', 'foo'); //returns 'fake1'
 mock(); //throws unexpected arguments
 ```
 
-__ignore alias__
+__ignoring all arguments__
 
 ```
 var mock = require('a').mock();
-mock.ignore().return('fake1'); //same as expectAnything
+mock.expectAnything().return('fake1'); //same as expectAnything
 
-mock('someRandomValue'); //returns 'fake1'
+mock('someRandomValue', 'whatever'); //returns 'fake1'
 mock(); //throws unexpected arguments
 ```
 
@@ -561,6 +561,8 @@ In demo directory run _a_
 
 Release Notes
 ---------------
+__1.0.0__  
+ExpectAnything() no longer expects only one argument, but arbitary number of arguments. Use ignore() if you want to ignore a single argument.  
 __0.4.8__  
 Executable test runner "when" is deprecated. Use "a" instead.  
 __0.4.7__  
