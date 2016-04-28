@@ -595,6 +595,9 @@ when(c).then(it => {
 
 Release Notes
 ---------------
+__2.0.4__
+- correct reporting of aborted promise mocks
+
 __2.0.3__  
 - abort Unfulfilled promise mocks after 10secs.  
 
