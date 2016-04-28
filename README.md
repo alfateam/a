@@ -595,6 +595,9 @@ when(c).then(it => {
 
 Release Notes
 ---------------
+__2.0.2__  
+- forgotten dependency version
+
 __2.0.1__  
 - Fix bin section in package.json.
 - Fix memory leak in the test runner
