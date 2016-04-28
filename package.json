@@ -14,7 +14,6 @@
          "url"  : "git@github.com:alfateam/a.git"
       },
   "bin": {
-    "when": "./node_modules/a_test/bin/rt.js",
-    "a": "./node_modules/a_test/bin/a.js"
+    "a": "./node_modules/a_test/dist/bin/a.js"
   }
 }

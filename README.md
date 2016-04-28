@@ -1,6 +1,6 @@
 _a_
 ===
-_Mocking framework_ + _testing framework_. 
+_Mocking framework_ + _testing framework_.
 
 
 The mocking framework can be used in any JavaScript testing framework.
@@ -26,7 +26,7 @@ npm install a -g
 _Mocking_
 ===================
 
-Mocking a function 
+Mocking a function
 ------------------
 
 __partial mock__
@@ -265,7 +265,7 @@ function onCalled(arg,callback) {
 	//callback == foo
 }
 
-function foo() {	
+function foo() {
 }
 
 
@@ -274,7 +274,7 @@ mock.verify() //returns true
 mock('testValue',foo); //throws unexpected arguments
 ```
 
-Mocking require 
+Mocking require
 ----------------
 
 __expectRequire__
@@ -305,7 +305,7 @@ __..is equivalent to ..__
 var mock = require('a').mock();
 var expectRequire = require('a').expectRequire;
 
-var fakeDep = mock; 
+var fakeDep = mock;
 expectRequire('./realDep').return(fakeDep);
 
 require('./realDep'); //returns fakeDep
@@ -341,8 +341,8 @@ __partial object mock__
 ```
 function newCustomer(_name) {
 	var c = {};
-	
-	c.getName = function () 
+
+	c.getName = function ()
 	{
 		return _name;
 	};
@@ -440,7 +440,7 @@ function error(e) {
 
 _A test framework_
 ===================
-_A_ test framework is a simplistic, magic-free library providing unit-testing facilities with a compact, bdd-style syntax. 
+_A_ test framework is a simplistic, magic-free library providing unit-testing facilities with a compact, bdd-style syntax.
 
 In contrast to other bdd-style test frameworks, however, it doesn't allow nesting suites in each other in order to test the SUT(subject under test) in different states. Instead, the framework relies on folder structure to describe the state which the SUT currently is. Suite names are generated based on their filenames. As a result there will be many small test files instead of few big ones with test suites nested in each other.
 
@@ -455,7 +455,7 @@ The test runner ( _a_ ) will search for all files named when*.js in current dire
 
 Given the following file structure
 
-- demo/	
+- demo/
 	- counter.js
 	- counter_specs/
 		- new/
@@ -463,7 +463,7 @@ Given the following file structure
 			- when_incremented.js
 		- new.js
 		- when_new.js
-	
+
 __counter.js__
 
 ```
@@ -472,7 +472,7 @@ module.exports = function () {
 		value: 0,
 		increment: function() { value++; }
 	};
-	
+
 	return counter;
 }
 ```
@@ -526,24 +526,24 @@ when('./increment', c).
 ```
 
 In demo directory run _a_
-	
+
 	user@localhost:~/a_demo $ a
 
 	 » counter_specs » new
-	
+
 	  ✓ should be an object
 	  ✓ should have value equal to zero
 	  ✘ should fail just for fun
-	
+
 	 » counter_specs » new » increment
-	
+
 	  ✓ should have value equal to 1
-	
+
 	========== Summary =============
 
 	counter_specs » new
 	  ✘ should fail just for fun
-	
+
 	AssertionError: error message
     	at retval.assertFail (/home/user/a_demo/node_modules/a/when/it.js:14:11)
     	at Object.test (/home/user/a_demo/node_modules/a/when/test_invoker.js:5:3)
@@ -559,8 +559,52 @@ In demo directory run _a_
 
 	suites: 2, passed: 3, failed: 1
 
+Async test support
+------------------
+modified act file should like like this:
+
+```
+
+function act(c) {
+	...
+	return c.sut(c.arguments); //returns promise
+}
+
+```
+
+or
+
+```
+
+async function act(c) {
+	...
+	await c.sut(c.arguments);
+}
+
+```
+test file should look like this
+```
+var when = require('a').when;
+var c = {};
+
+when(c).then(it => {
+	it('....').assertXXXX();
+});
+
+```
+
 Release Notes
 ---------------
+__2.0.1__  
+- Fix bin section in package.json.
+- Fix memory leak in the test runner
+
+__2.0.0__   
+BREAKING CHANGE: Support async testing.
+- Tests relying on ability of [deferred][2] to resolve synchronously expected to cause problems.
+- Unfulfilled promises will prevent runner from exiting.
+- Runner uses babel-runtime which implies strict mode.
+
 __1.0.1__  
 ExpectAnything() can be nested - for backwards compatability only.  
 __1.0.0__  
@@ -587,7 +631,7 @@ __0.4.1__
 "When" can accept function instead of separate act file. See example in [demo][1] repo.  
 __0.4.0__  
 Cleaner output on failed assertions.  
-__0.3.9__  
+__0.3.9__   
 Can inherit act by convention. See examples in [demo][0] repo.  
 __0.3.8__  
 Cleaner stack trace on mock errors.  
