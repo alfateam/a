@@ -595,6 +595,9 @@ when(c).then(it => {
 
 Release Notes
 ---------------
+__2.0.5__  
+- test runner uses _node_ instead of _nodejs_
+
 __2.0.4__
 - correct reporting of aborted promise mocks
 
