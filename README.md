@@ -595,6 +595,9 @@ when(c).then(it => {
 
 Release Notes
 ---------------
+__2.0.6__  
+- test runner reports when a file with tests is not runnable
+
 __2.0.5__  
 - test runner uses _node_ instead of _nodejs_
 
