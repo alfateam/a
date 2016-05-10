@@ -595,6 +595,9 @@ when(c).then(it => {
 
 Release Notes
 ---------------
+__2.0.7__
+- test runner is able to load modules exporting a default function.
+
 __2.0.6__  
 - test runner reports when a file with tests is not runnable
 
