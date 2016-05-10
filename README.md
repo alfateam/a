@@ -595,7 +595,10 @@ when(c).then(it => {
 
 Release Notes
 ---------------
-__2.0.7__
+__2.0.8__  
+- update README
+
+__2.0.7__  
 - test runner is able to load modules exporting a default function.
 
 __2.0.6__  
