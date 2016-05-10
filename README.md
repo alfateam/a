@@ -31,7 +31,7 @@ Mocking a function
 
 __partial mock__
 
-```
+```js
 var original = function() {
 	return 'realValue';
 }
@@ -48,7 +48,7 @@ original(); //returns 'realValue'
 
 __strict mock__
 
-```
+```js
 var mock = require('a').mock();
 mock.expect().return('fake');
 
@@ -60,7 +60,7 @@ mock(); //throws unexpected arguments
 
 __expecting arguments__
 
-```
+```js
 var mock = require('a').mock();
 mock.expect('testValue1').return('fake1');
 mock.expect('testValue2').return('fake2');
@@ -75,7 +75,7 @@ mock('foo'); //throws unexpected arguments
 
 __expecting multiple arguments__
 
-```
+```js
 var mock = require('a').mock();
 mock.expect('firstArg1', 'secondArg1').return('fake1');
 mock.expect('firstArg2', 'secondArg2').return('fake2');
@@ -89,7 +89,7 @@ mock('foo', 'bar'); //throws unexpected arguments
 
 __expecting array__
 
-```
+```js
 var mock = require('a').mock();
 mock.expect(['a','b']).return('fake1');
 mock.expect(['a','b').return('fake2');
@@ -104,7 +104,7 @@ mock(['foo', 'bar']); //throws unexpected arguments
 
 __expecting struct__
 
-```
+```js
 var mock = require('a').mock();
 var obj = {};
 mock.expect({a : 1}).return('fake1');
@@ -123,7 +123,7 @@ mock({});  //throws unexpected arguments
 
 __repeats__
 
-```
+```js
 var mock = require('a').mock();
 mock.expect().return('fake').repeat(2);
 
@@ -134,7 +134,7 @@ mock(); //throws unexpected arguments
 
 __infinite repeats__
 
-```
+```js
 var mock = require('a').mock();
 mock.expect().return('fake').repeatAny();
 
@@ -146,7 +146,7 @@ mock(); //returns 'fake'...
 
 __ignoring a single argument__
 
-```
+```js
 var mock = require('a').mock();
 mock.ignore().expect('foo').return('fake1');
 
@@ -156,7 +156,7 @@ mock(); //throws unexpected arguments
 
 __ignoring all arguments__
 
-```
+```js
 var mock = require('a').mock();
 mock.expectAnything().return('fake1'); //same as expectAnything
 
@@ -167,7 +167,7 @@ mock(); //throws unexpected arguments
 
 __throwing exceptions__
 
-```
+```js
 var mock = require('a').mock();
 var error = new Error('invalid operation');
 mock.expect().throw(error);
@@ -179,7 +179,7 @@ mock(); //returns 'fake'
 
 __intercepting__
 
-```
+```js
 var mock = require('a').mock();
 mock.expect('testValue').whenCalled(onCalled).return('fake1');
 
@@ -193,7 +193,7 @@ mock(); //throws unexpected arguments
 
 __verify (fail)__
 
-```
+```js
 var mock = require('a').mock();
 mock.expect('testValue1').return('fake1');
 mock.expect('testValue2').return('fake2');
@@ -204,7 +204,7 @@ mock.verify(); //throws mock has 1 pending functions
 
 __verify (success)__
 
-```
+```js
 var mock = require('a').mock();
 mock.expect('testValue1').return('fake1');
 mock.expect('testValue2').return('fake2');
@@ -216,7 +216,7 @@ mock.verify(); //returns true
 
 __returning void (compact syntax)__
 
-```
+```js
 var mock = require('a').mock();
 mock.expect('testValue1');
 mock.expect('testValue2').repeat(2);
@@ -228,7 +228,7 @@ mock.verify(); //returns true
 ```
 
 __..is equivalent to ..__
-```
+```js
 var mock = require('a').mock();
 mock.expect('testValue1').return();
 mock.expect('testValue2').return().repeat(2);
@@ -240,7 +240,7 @@ mock.verify(); //returns true
 ```
 
 __reset mock__
-```
+```js
 var original = function() {
 	return 'realValue';
 }
@@ -256,7 +256,7 @@ original(); //returns 'realValue'
 
 __strict mock - advanced scenario__
 
-```
+```js
 var mock = require('a').mock();
 mock.expect('testValue').ignore().whenCalled(onCalled).return('fake1');
 
@@ -279,7 +279,7 @@ Mocking require
 
 __expectRequire__
 
-```
+```js
 var fakeDep = {};
 
 var expectRequire = require('a').expectRequire;
@@ -291,7 +291,7 @@ require('./realDep'); //returns realDep (behaves like a partial mock)
 
 __requireMock (compact syntax)__
 
-```
+```js
 var requireMock = require('a').requireMock;
 var fakeDep = requireMock('./realDep'); //returns a strict mock
 
@@ -301,7 +301,7 @@ require('./realDep'); //returns realDep
 
 __..is equivalent to ..__
 
-```
+```js
 var mock = require('a').mock();
 var expectRequire = require('a').expectRequire;
 
@@ -314,7 +314,7 @@ require('./realDep'); //returns realDep
 
 __reset mocks for require__
 
-```
+```js
 var fakeDep = {};
 
 var expectRequire = require('a').expectRequire;
@@ -326,7 +326,7 @@ require('./realDep'); //returns realDep
 
 __..is equivalent to ..__
 
-```
+```js
 var requireMock = require('a').requireMock;
 var fakeDep = requireMock('./realDep'); //returns a strict mock
 requireMock.reset(); //is an alias for expectRequire.reset()
@@ -338,7 +338,7 @@ Mocking an object
 -----------------
 __partial object mock__
 
-```
+```js
 function newCustomer(_name) {
 	var c = {};
 
@@ -364,7 +364,7 @@ Mocking promises
 -----------------
 __mocking resolve__
 
-```
+```js
 var a = require('a');
 
 var promise = a.then(); //mocked promise
@@ -383,7 +383,7 @@ function error(e) {
 
 __mocking resolve (alternative syntax)__
 
-```
+```js
 var a = require('a');
 
 var promise = a.then(); //mocked promise
@@ -402,7 +402,7 @@ function error(e) {
 
 __mocking reject__
 
-```
+```js
 var a = require('a');
 
 var promise = a.then();
@@ -421,7 +421,7 @@ function error(e) {
 
 __mocking reject (alternative syntax)__
 
-```
+```js
 var a = require('a');
 
 var promise = a.then();
@@ -466,7 +466,7 @@ Given the following file structure
 
 __counter.js__
 
-```
+```js
 module.exports = function () {
 	var counter = {
 		value: 0,
@@ -479,7 +479,7 @@ module.exports = function () {
 
 __counter_specs/new.js__
 
-```
+```js
 function act(c) {
 	var createCounter = require('../counter');
 	c.sut = createCounter();
@@ -489,7 +489,7 @@ module.exports = act;
 
 __counter_specs/when_new.js__
 
-```
+```js
 var c = {}; //test context object
 var when = require('a').when;
 
@@ -505,7 +505,7 @@ when('./new', c). //set up
 
 __counter_specs/new/increment.js__
 
-```
+```js
 function act(c) {
 	c.sut.increment();
 }
@@ -515,7 +515,7 @@ module.exports = act;
 
 __counter_specs/new/when_incremented.js__
 
-```
+```js
 var c = {};
 var when = require('a').when;
 
@@ -563,7 +563,7 @@ Async test support
 ------------------
 modified act file should like like this:
 
-```
+```js
 
 function act(c) {
 	...
@@ -574,7 +574,7 @@ function act(c) {
 
 or
 
-```
+```js
 
 async function act(c) {
 	...
@@ -583,7 +583,7 @@ async function act(c) {
 
 ```
 test file should look like this
-```
+```js
 var when = require('a').when;
 var c = {};
 
@@ -680,7 +680,7 @@ expect now handles structs - equality is acheived when same propertyNames and eq
 __0.2.9__   
 "When" can resolve act by convention. If test class is named "when_foo.js", it will assume "foo.js" is the act.  
 Example, given when_foo.js:  
-```
+```js
 var c = {};
 var when = require('a').when;
 
