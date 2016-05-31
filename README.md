@@ -595,6 +595,9 @@ when(c).then(it => {
 
 Release Notes
 ---------------
+__2.0.9__  
+ - replace dependency for coloured console output in test runner.
+
 __2.0.8__  
 - update README
 
