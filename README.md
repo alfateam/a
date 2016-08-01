@@ -595,6 +595,9 @@ when(c).then(it => {
 
 Release Notes
 ---------------
+__2.0.10__  
+ - disable runtime babel transpiling by default, set A_TEST_BABEL_REGISTER environment variable to enable it.
+
 __2.0.9__  
  - replace dependency for coloured console output in test runner.
 
