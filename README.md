@@ -595,6 +595,14 @@ when(c).then(it => {
 
 Release Notes
 ---------------
+__2.0.12__  
+ - assertOk(falsy) would not throw (#21)
+ - report suites that cannot be loaded as unrunnable (#20)
+ - fix async test result reporting order
+
+__2.0.11__  
+ - README update
+
 __2.0.10__  
  - disable runtime babel transpiling by default, set A_TEST_BABEL_REGISTER environment variable to enable it.
 
