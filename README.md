@@ -595,6 +595,9 @@ when(c).then(it => {
 
 Release Notes
 ---------------
+__2.0.13__  
+ - a_mock 1.0.4, implements promise mock which is synchronous
+
 __2.0.12__  
  - assertOk(falsy) would not throw (#21)
  - report suites that cannot be loaded as unrunnable (#20)
