@@ -253,6 +253,25 @@ mock.reset();
 original(); //returns 'realValue'
 ```
 
+__returning resolved promise__
+```js
+var mock = require('a').mock();
+mock.expect('foo').resolve('fake');
+
+mock('foo').then(function(returned){
+	//returned == 'fake'
+}); 
+```
+
+__returning rejected promise__
+```js
+var mock = require('a').mock();
+mock.expect('foo').reject('fake');
+
+mock('foo').then(null, function(returned){
+	//returned == 'fake'
+}); 
+```
 
 __strict mock - advanced scenario__
 
@@ -595,6 +614,9 @@ when(c).then(it => {
 
 Release Notes
 ---------------
+__2.0.2__  
+ - short hand syntax for returning promises (sync)
+
 __2.0.13__  
  - a_mock 1.0.4, implements promise mock which is synchronous
 
