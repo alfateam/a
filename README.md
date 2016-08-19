@@ -614,7 +614,7 @@ when(c).then(it => {
 
 Release Notes
 ---------------
-__2.0.2__  
+__2.1.0__  
  - short hand syntax for returning promises (sync)
 
 __2.0.13__  
