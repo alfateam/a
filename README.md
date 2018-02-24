@@ -117,7 +117,7 @@ mock({a : 'x'}); //throws unexpected arguments
 mock({a : 1}); //returns 'fake1'
 mock({a : 2}); //returns 'fake2'
 mock({a : 2, b : {c : 'foo', d : ['me', 'too']}}); //returns 'fake3'
-mock(obj);  //returns 'fake3'
+mock(obj);  //returns 'fake4'
 mock({});  //throws unexpected arguments
 ```
 
