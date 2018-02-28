@@ -1,10 +1,11 @@
 {
   "name": "a",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "main": "index.js",
   "title": "a",
   "description": "Mocking framework and test framework in compact when-style. With recursive test runner",
   "keywords": ["mock","mocking","partial mock","strict mock","tdd","bdd","test runner","stub","stubbing","mock require","verify","unit test"],
+  "license": "MIT",
   "dependencies": {
 		"a_mock": "1.0.5",
 		"a_test": "1.0.9"

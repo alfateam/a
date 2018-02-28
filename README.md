@@ -614,6 +614,9 @@ when(c).then(it => {
 
 Release Notes
 ---------------
+__2.1.2__  
+ - [typo in docs](https://github.com/alfateam/a/pull/4)
+
 __2.1.0__  
  - short hand syntax for returning promises (sync)
 
