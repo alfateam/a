@@ -461,7 +461,7 @@ _A test framework_
 ===================
 _A_ test framework is a simplistic, magic-free library providing unit-testing facilities with a compact, bdd-style syntax.
 
-In contrast to other bdd-style test frameworks, it doesn't allow nesting suites in each other in order to test the SUT(subject under test) in different states. Instead, the framework relies on folder structure to describe the state. The SUT currently has that folder structure. Suite names are generated based on their filenames. As a result, there will be many small test files without nested test suites instead of few big test files with nested test suites.
+In contrast to other bdd-style test frameworks, it doesn't allow nesting suites in each other in order to test the SUT(subject under test) in different states. Instead, the framework relies on folder structure to describe the state. The SUT currently has that folder structure. Suite names are generated based on their filenames. As a result, there will be many small test files without nested test suites instead of a few big test files with nested test suites.
 
 Test setup, the "Arrange-Act" part of suites, is separated from the "Assert" part. This way the same setup can be used across different suites. Test setups can be chained.
 
