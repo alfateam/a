@@ -5,9 +5,9 @@ _Mocking framework_ + _testing framework_.
 
 The mocking framework can be used in any JavaScript testing framework.
 
-The testing framework has a short and concise bdd syntax - with reusable contexts.
+The testing framework has a short and concise bdd syntax with reusable contexts.
 
-__how to install__
+__To install:__
 
 ```
 npm install a
@@ -15,7 +15,7 @@ npm install a
 
 
 
-__if you want the test framework, install it globally too__
+__If you want the test framework, install it globally too:__
 
 ```
 npm install a -g
@@ -29,7 +29,7 @@ _Mocking_
 Mocking a function
 ------------------
 
-__partial mock__
+__Partial mock__
 
 ```js
 var original = function() {
@@ -46,7 +46,7 @@ original(); //returns 'realValue'
 
 
 
-__strict mock__
+__Strict mock__
 
 ```js
 var mock = require('a').mock();
@@ -58,7 +58,7 @@ mock(); //throws unexpected arguments
 
 
 
-__expecting arguments__
+__Expecting arguments__
 
 ```js
 var mock = require('a').mock();
@@ -73,7 +73,7 @@ mock('foo'); //throws unexpected arguments
 
 
 
-__expecting multiple arguments__
+__Expecting multiple arguments__
 
 ```js
 var mock = require('a').mock();
@@ -87,7 +87,7 @@ mock('foo'); //throws unexpected arguments
 mock('foo', 'bar'); //throws unexpected arguments
 ```
 
-__expecting array__
+__Expecting array__
 
 ```js
 var mock = require('a').mock();
@@ -102,7 +102,7 @@ mock(['a','b']); //throws unexpected arguments
 mock(['foo', 'bar']); //throws unexpected arguments
 ```
 
-__expecting struct__
+__Expecting struct__
 
 ```js
 var mock = require('a').mock();
@@ -121,7 +121,7 @@ mock(obj);  //returns 'fake4'
 mock({});  //throws unexpected arguments
 ```
 
-__repeats__
+__Repeats__
 
 ```js
 var mock = require('a').mock();
@@ -132,7 +132,7 @@ mock(); //returns 'fake'
 mock(); //throws unexpected arguments
 ```
 
-__infinite repeats__
+__Infinite repeats__
 
 ```js
 var mock = require('a').mock();
@@ -144,7 +144,7 @@ mock(); //returns 'fake'...
 ```
 
 
-__ignoring a single argument__
+__Ignoring a single argument__
 
 ```js
 var mock = require('a').mock();
@@ -154,7 +154,7 @@ mock('ignore me', 'foo'); //returns 'fake1'
 mock(); //throws unexpected arguments
 ```
 
-__ignoring all arguments__
+__Ignoring all arguments__
 
 ```js
 var mock = require('a').mock();
@@ -165,7 +165,7 @@ mock(); //throws unexpected arguments
 ```
 
 
-__throwing exceptions__
+__Throwing exceptions__
 
 ```js
 var mock = require('a').mock();
@@ -177,7 +177,7 @@ mock(); //throws error
 mock(); //returns 'fake'
 ```
 
-__intercepting__
+__Intercepting__
 
 ```js
 var mock = require('a').mock();
@@ -191,7 +191,7 @@ mock('testValue'); //returns 'fake1'
 mock(); //throws unexpected arguments
 ```
 
-__verify (fail)__
+__Verify (fail)__
 
 ```js
 var mock = require('a').mock();
@@ -202,7 +202,7 @@ mock('testValue1'); //returns 'fake1'
 mock.verify(); //throws mock has 1 pending functions
 ```
 
-__verify (success)__
+__Verify (success)__
 
 ```js
 var mock = require('a').mock();
@@ -239,7 +239,7 @@ mock('testValue2'); //returns undefined
 mock.verify(); //returns true
 ```
 
-__reset mock__
+__Reset mock__
 ```js
 var original = function() {
 	return 'realValue';
@@ -253,7 +253,7 @@ mock.reset();
 original(); //returns 'realValue'
 ```
 
-__returning resolved promise__
+__Returning resolved promise__
 ```js
 var mock = require('a').mock();
 mock.expect('foo').resolve('fake');
@@ -263,7 +263,7 @@ mock('foo').then(function(returned){
 }); 
 ```
 
-__returning rejected promise__
+__Returning rejected promise__
 ```js
 var mock = require('a').mock();
 mock.expect('foo').reject('fake');
@@ -273,7 +273,7 @@ mock('foo').then(null, function(returned){
 }); 
 ```
 
-__strict mock - advanced scenario__
+__Strict mock - advanced scenario__
 
 ```js
 var mock = require('a').mock();
@@ -331,7 +331,7 @@ require('./realDep'); //returns fakeDep
 require('./realDep'); //returns realDep
 ```
 
-__reset mocks for require__
+__Reset mocks for require__
 
 ```js
 var fakeDep = {};
@@ -355,7 +355,7 @@ require('./realDep'); //returns realDep
 ```
 Mocking an object
 -----------------
-__partial object mock__
+__Partial object mock__
 
 ```js
 function newCustomer(_name) {
@@ -381,7 +381,7 @@ customerMock.verify(); //returns true
 
 Mocking promises
 -----------------
-__mocking resolve__
+__Mocking resolve__
 
 ```js
 var a = require('a');
@@ -400,7 +400,7 @@ function error(e) {
 }
 ```
 
-__mocking resolve (alternative syntax)__
+__Mocking resolve (alternative syntax)__
 
 ```js
 var a = require('a');
@@ -419,7 +419,7 @@ function error(e) {
 }
 ```
 
-__mocking reject__
+__Mocking reject__
 
 ```js
 var a = require('a');
@@ -438,7 +438,7 @@ function error(e) {
 }
 ```
 
-__mocking reject (alternative syntax)__
+__Mocking reject (alternative syntax)__
 
 ```js
 var a = require('a');
@@ -461,16 +461,16 @@ _A test framework_
 ===================
 _A_ test framework is a simplistic, magic-free library providing unit-testing facilities with a compact, bdd-style syntax.
 
-In contrast to other bdd-style test frameworks, however, it doesn't allow nesting suites in each other in order to test the SUT(subject under test) in different states. Instead, the framework relies on folder structure to describe the state which the SUT currently is. Suite names are generated based on their filenames. As a result there will be many small test files instead of few big ones with test suites nested in each other.
+In contrast to other bdd-style test frameworks, it doesn't allow nesting suites in each other in order to test the SUT(subject under test) in different states. Instead, the framework relies on folder structure to describe the state. The SUT currently has that folder structure. Suite names are generated based on their filenames. As a result, there will be many small test files without nested test suites instead of few big test files with nested test suites.
 
-Test setup -- the "Arrange-Act" part of suites, is separated from the "Assert" part. This way the same setup can be used across different suites. Test setups can, of course, be chained.
+Test setup, the "Arrange-Act" part of suites, is separated from the "Assert" part. This way the same setup can be used across different suites. Test setups can be chained.
 
 
 Examples below can be found here: https://github.com/alfateam/a_demo
 
 Example
 ---------
-The test runner ( _a_ ) will search for all files named when*.js in current directory and below.
+The test runner ( _a_ ) will search for all files named 'when*.js' in the current and sub-directories.
 
 Given the following file structure
 
@@ -544,7 +544,7 @@ when('./increment', c).
 
 ```
 
-In demo directory run _a_
+__In demo directory, run _a_ __
 
 	user@localhost:~/a_demo $ a
 
@@ -580,7 +580,7 @@ In demo directory run _a_
 
 Async test support
 ------------------
-modified act file should like like this:
+Modified act files should look like this:
 
 ```js
 
@@ -601,7 +601,7 @@ async function act(c) {
 }
 
 ```
-test file should look like this
+Test file should look like this:
 ```js
 var when = require('a').when;
 var c = {};
