@@ -75,7 +75,7 @@ mock('foo'); //throws unexpected arguments
 
 __Expecting multiple arguments__
 
-```js
+`js
 var mock = require('a').mock();
 mock.expect('firstArg1', 'secondArg1').return('fake1');
 mock.expect('firstArg2', 'secondArg2').return('fake2');
@@ -89,7 +89,7 @@ mock('foo', 'bar'); //throws unexpected arguments
 
 __Expecting array__
 
-```js
+`js
 var mock = require('a').mock();
 mock.expect(['a','b']).return('fake1');
 mock.expect(['a','b').return('fake2');
