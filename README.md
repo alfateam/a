@@ -459,6 +459,7 @@ function error(e) {
 
 _A test framework_
 ===================
+<b>From version 3.0.0 this is in a separate package: [npmjs.com/package/a_test](https://npmjs.com/package/a_test)</b>  
 _A_ test framework is a simplistic, magic-free library providing unit-testing facilities with a compact, bdd-style syntax.
 
 In contrast to other bdd-style test frameworks, it doesn't allow nesting suites in each other in order to test the SUT(subject under test) in different states. Instead, the framework relies on folder structure to describe the state. The SUT currently has that folder structure. Suite names are generated based on their filenames. As a result, there will be many small test files without nested test suites instead of a few big test files with nested test suites.
@@ -614,6 +615,9 @@ when(c).then(it => {
 
 Release Notes
 ---------------
+__3.0.0__  
+ - The the testing framework is moved to separate repo: [npmjs.com/package/a_test](https://npmjs.com/package/a_test)  
+ 
 __2.1.2__  
  - [typo in docs](https://github.com/alfateam/a/pull/4)
 
