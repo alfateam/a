@@ -92,7 +92,7 @@ __Expecting array__
 ```js
 var mock = require('a').mock();
 mock.expect(['a','b']).return('fake1');
-mock.expect(['a','b').return('fake2');
+mock.expect(['a','b']).return('fake2');
 mock.expect(['c','d').return('fake3');
 
 mock(['a','b']); //returns 'fake1'
