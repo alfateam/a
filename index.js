@@ -9,6 +9,5 @@ module.exports = {
 	mock: a_mock.mock,
 	expectRequire: a_mock.expectRequire,
 	requireMock: a_mock.requireMock,
-	then: a_mock.then
+	promise: a_mock.promise
 };
-

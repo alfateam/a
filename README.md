@@ -386,7 +386,7 @@ __Mocking resolve__
 ```js
 var a = require('a');
 
-var promise = a.then(); //mocked promise
+var promise = a.promise(); //mocked promise
 
 promise.then(success,error);
 promise.resolve('success');
@@ -405,7 +405,7 @@ __Mocking resolve (alternative syntax)__
 ```js
 var a = require('a');
 
-var promise = a.then(); //mocked promise
+var promise = a.promise(); //mocked promise
 
 promise.then(success,error);
 promise('success');
@@ -424,7 +424,7 @@ __Mocking reject__
 ```js
 var a = require('a');
 
-var promise = a.then();
+var promise = a.promise();
 
 promise.then(success,error);
 promise.reject(new Error('error'));
@@ -443,7 +443,7 @@ __Mocking reject (alternative syntax)__
 ```js
 var a = require('a');
 
-var promise = a.then();
+var promise = a.promise();
 
 promise.then(success,error);
 promise(null,new Error('error'));
