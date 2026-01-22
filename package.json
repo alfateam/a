@@ -4,14 +4,26 @@
   "main": "index.js",
   "title": "a",
   "description": "Mocking framework",
-  "keywords": ["mock","mocking","partial mock","strict mock","tdd","bdd","test runner","stub","stubbing","mock require","verify","unit test"],
+  "keywords": [
+    "mock",
+    "mocking",
+    "partial mock",
+    "strict mock",
+    "tdd",
+    "bdd",
+    "test runner",
+    "stub",
+    "stubbing",
+    "mock require",
+    "verify",
+    "unit test"
+  ],
   "license": "MIT",
-  "dependencies": {
-		"a_mock": "2.0.0"
-    
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:alfateam/a.git"
   },
-  "repository" : {
-         "type" : "git",
-         "url"  : "git@github.com:alfateam/a.git"
-      }  
+  "dependencies": {
+    "a_mock": "^2.0.1"
+  }
 }
