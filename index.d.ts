@@ -40,7 +40,7 @@ interface RepeatControl {
 
 interface ExpectationTerminal<R, TArgs extends any[], TOrigArgs extends any[] = TArgs> {
   return(value: R): RepeatControl;
-  returnAny(value?: any): RepeatControl;
+  returnLoose(value?: any): RepeatControl;
   whenCalled(callback: CallbackFor<TOrigArgs>): ExpectationTerminal<R, TArgs, TOrigArgs>;
   repeat(times: number): RepeatControl;
   repeatAny(): RepeatControl;
