@@ -1,11 +1,10 @@
 _a_
 ===
-_Mocking framework_ + _testing framework_.
+_Mocking framework_ 
 
 
 The mocking framework can be used in any JavaScript testing framework.
 
-The testing framework has a short and concise bdd syntax with reusable contexts.
 
 __To install:__
 
@@ -43,6 +42,8 @@ mock.expect().return('fake');
 original(); //returns 'fake'
 original(); //returns 'realValue'
 ```
+
+Note: Consumers do not need to provide a `thisArg`. It is optional and only used to force a specific `this` when the original fallback is called (low-level partial mock usage).
 
 
 
@@ -158,7 +159,7 @@ __Ignoring all arguments__
 
 ```js
 var mock = require('a').mock();
-mock.expectAnything().return('fake1'); //same as expectAnything
+mock.ignoreAll().return('fake1'); //same as expectAnything
 
 mock('someRandomValue', 'whatever'); //returns 'fake1'
 mock(); //throws unexpected arguments
@@ -612,133 +613,3 @@ when(c).then(it => {
 });
 
 ```
-
-Release Notes
----------------
-__3.0.0__  
- - The the testing framework is moved to separate repo: [npmjs.com/package/a_test](https://npmjs.com/package/a_test)  
- 
-__2.1.2__  
- - [typo in docs](https://github.com/alfateam/a/pull/4)
-
-__2.1.0__  
- - short hand syntax for returning promises (sync)
-
-__2.0.13__  
- - a_mock 1.0.4, implements promise mock which is synchronous
-
-__2.0.12__  
- - assertOk(falsy) would not throw (#21)
- - report suites that cannot be loaded as unrunnable (#20)
- - fix async test result reporting order
-
-__2.0.11__  
- - README update
-
-__2.0.10__  
- - disable runtime babel transpiling by default, set A_TEST_BABEL_REGISTER environment variable to enable it.
-
-__2.0.9__  
- - replace dependency for coloured console output in test runner.
-
-__2.0.8__  
-- update README
-
-__2.0.7__  
-- test runner is able to load modules exporting a default function.
-
-__2.0.6__  
-- test runner reports when a file with tests is not runnable
-
-__2.0.5__  
-- test runner uses _node_ instead of _nodejs_
-
-__2.0.4__
-- correct reporting of aborted promise mocks
-
-__2.0.3__  
-- abort Unfulfilled promise mocks after 10secs.  
-
-__2.0.2__  
-- forgotten dependency version
-
-__2.0.1__  
-- Fix bin section in package.json.
-- Fix memory leak in the test runner
-
-__2.0.0__   
-BREAKING CHANGE: Support async testing.
-- Tests relying on ability of [deferred][2] to resolve synchronously expected to cause problems.
-- Unfulfilled promises will prevent runner from exiting.
-- Runner uses babel-runtime which implies strict mode.
-
-__1.0.1__  
-ExpectAnything() can be nested - for backwards compatability only.  
-__1.0.0__  
-ExpectAnything() no longer expects only one argument, but arbitary number of arguments. Use ignore() if you want to ignore a single argument.  
-__0.4.8__  
-Executable test runner "when" is deprecated. Use "a" instead.  
-__0.4.7__  
-Inconclusive tests are accounted as failed in exit code.  
-__0.4.6__  
-Fixed memory leak in test runner.  
-__0.4.5__  
-Display stack trace of inconclusive suites.  
-Use dependency [deferred][2] instead of [promise][3].  
-__0.4.4__  
-Introduced promise mocks.  
-Tests with failing setup are reported as inconclusive.  
-Bugfix: Test names no longer converted to lowercase.  
-__0.4.3__  
-Can reset expectations on mocks by mock.reset.  
-Renamed expectRequire.clear to expectRequire.reset. Same goes for for requireMock.  
-__0.4.2__  
-Can clear expectations on require by using expectRequire.clear.  
-__0.4.1__  
-"When" can accept function instead of separate act file. See example in [demo][1] repo.  
-__0.4.0__  
-Cleaner output on failed assertions.  
-__0.3.9__   
-Can inherit act by convention. See examples in [demo][0] repo.  
-__0.3.8__  
-Cleaner stack trace on mock errors.  
-__0.3.7__  
-Test path can be sent as argument to test runner.  
-If no path is specified, the test runner will run from current directory.  
-Example: ```when c:/devel/foo/testFolder```  
-__0.3.6__  
-Exit code is equal to number of failing tests.  
-__0.3.5__  
-Tests files are run in hierarchical order from top to bottom.  
-__0.3.4__  
-Cache was cleared at wrong time. This could lead to overflow when running large amount of tests.  
-Make sure you update globally (npm update a -g) to get this fix, not only the local dependency.  
-__0.3.3__  
-Error in documentation about structs.  
-__0.3.2__  
-Mocks can be set up to throw.  
-__0.3.1__  
-"when" deletes all cached modules before executing. This ensures tests are isolated.  
-ignore is alias for expectAnything.  
-"When" can resolve act by camcelCase convention. If test class is named "whenFoo.js", it will assume "foo.js" is the act.  
-
-__0.3.0__  
-expectArray is deprecated, use expect instead.  
-expect now handles structs - equality is acheived when same propertyNames and equal leaf properties.
-
-__0.2.9__   
-"When" can resolve act by convention. If test class is named "when_foo.js", it will assume "foo.js" is the act.  
-Example, given when_foo.js:  
-```js
-var c = {};
-var when = require('a').when;
-
-when(c). //equivalent to: when('./foo',c)....
-	it('should have value equal to 1').
-		assertEqual(1, c.sut.value);
-
-```
-[0]:https://github.com/alfateam/a_demo
-[1]:https://github.com/alfateam/a_demo/blob/master/assert_specs/when_assertions.js
-[2]:https://www.npmjs.org/package/deferred
-[3]:https://www.npmjs.org/package/promise
