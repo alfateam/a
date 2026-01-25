@@ -39,8 +39,8 @@ var mock = require('a').mock(original);
 original = mock;
 mock.expect().return('fake');
 
-original(); //returns 'fake'
-original(); //returns 'realValue'
+mock(); //returns 'fake'
+mock(); //returns 'realValue'
 ```
 
 Note: Consumers do not need to provide a `thisArg`. It is optional and only used to force a specific `this` when the original fallback is called (low-level partial mock usage).
@@ -274,11 +274,10 @@ var original = function() {
 }
 
 var mock = require('a').mock(original);
-original = mock;
 mock.expect().return('fake');
 mock.reset();
 
-original(); //returns 'realValue'
+mock(); //returns 'realValue'
 ```
 
 __Returning resolved promise__
