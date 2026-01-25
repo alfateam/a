@@ -1,4 +1,4 @@
-_a_
+cd_a_
 ===
 _Mocking framework_ 
 
@@ -121,6 +121,7 @@ mock({a : 2, b : {c : 'foo', d : ['me', 'too']}}); //returns 'fake3'
 mock(obj);  //returns 'fake4'
 mock({});  //throws unexpected arguments
 ```
+Note: Struct matching is strict on leaf properties. All leaf property values must be equal to match, and an empty object does not match a non-empty expected struct.
 
 __Repeats__
 

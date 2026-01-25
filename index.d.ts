@@ -1,5 +1,3 @@
-import type { AxiosInstance, AxiosResponse } from 'axios';
-
 type AnyFunction = (...args: any[]) => any;
 type Tail<T extends any[]> = T extends [any, ...infer R] ? R : [];
 type OverloadedParameters<T> = T extends {
@@ -26,9 +24,7 @@ type FunctionProps<T> = T extends (...args: any[]) => any
   : {};
 type MockedFunction<T extends AnyFunction> = MockFunction<
   OverloadedParameters<T>,
-  T extends AxiosInstance
-    ? Promise<AxiosResponse<any, any, {}>>
-    : OverloadedReturnType<T>
+  OverloadedReturnType<T>
 > &
   T &
   FunctionProps<T>;
