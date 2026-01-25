@@ -24,7 +24,13 @@
     "type": "git",
     "url": "git@github.com:alfateam/a.git"
   },
+  "scripts": {
+    "test": "c8 --reporter=lcov --reporter=text node --test"
+  },
   "dependencies": {
     "a_mock": "^2.0.1"
+  },
+  "devDependencies": {
+    "c8": "^10.1.3"
   }
 }

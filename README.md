@@ -2,6 +2,9 @@ _a_
 ===
 _Mocking framework_ 
 
+[![CI](https://github.com/alfateam/a/actions/workflows/ci.yml/badge.svg)](https://github.com/alfateam/a/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/alfateam/a/graph/badge.svg)](https://codecov.io/gh/alfateam/a)
+
 
 The mocking framework can be used in any JavaScript testing framework.
 
