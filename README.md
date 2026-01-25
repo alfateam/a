@@ -44,34 +44,6 @@ mock(); //returns 'realValue'
 ```
 
 Note: Consumers do not need to provide a `thisArg`. It is optional and only used to force a specific `this` when the original fallback is called (low-level partial mock usage).
-Mocking an object
-
------------------
-__Partial object mock__
-
-```js
-function newCustomer(_name) {
-	var c = {};
-
-	c.getName = function ()
-	{
-		return _name;
-	};
-
-	return c;
-}
-
-var customer = newCustomer('Alfonzo The Real');
-var customerMock = mock(customer);
-
-customerMock.getName.expect().return('Johnny Fake');
-
-customer.getName(); //returns Johnny Fake
-customer.getName(); //returns Alfonzo The Real
-customerMock.verify(); //returns true
-```
-
-
 
 __Strict mock__
 
@@ -82,8 +54,6 @@ mock.expect().return('fake');
 mock(); //returns 'fake'
 mock(); //throws unexpected arguments
 ```
-
-
 
 __Expecting arguments__
 
@@ -149,6 +119,26 @@ mock({});  //throws unexpected arguments
 ```
 Note: Struct matching is strict on leaf properties. All leaf property values must be equal to match, and an empty object does not match a non-empty expected struct.
 
+__Ignoring a single argument__
+
+```js
+var mock = require('a').mock();
+mock.ignore().expect('foo').return('fake1');
+
+mock('ignore me', 'foo'); //returns 'fake1'
+mock(); //throws unexpected arguments
+```
+
+__Ignoring all arguments__
+
+```js
+var mock = require('a').mock();
+mock.ignoreAll().return('fake1'); //same as expectAnything
+
+mock('someRandomValue', 'whatever'); //returns 'fake1'
+mock(); //throws unexpected arguments
+```
+
 __Repeats__
 
 ```js
@@ -169,27 +159,6 @@ mock.expect().return('fake').repeatAny();
 mock(); //returns 'fake'
 mock(); //returns 'fake'
 mock(); //returns 'fake'...
-```
-
-
-__Ignoring a single argument__
-
-```js
-var mock = require('a').mock();
-mock.ignore().expect('foo').return('fake1');
-
-mock('ignore me', 'foo'); //returns 'fake1'
-mock(); //throws unexpected arguments
-```
-
-__Ignoring all arguments__
-
-```js
-var mock = require('a').mock();
-mock.ignoreAll().return('fake1'); //same as expectAnything
-
-mock('someRandomValue', 'whatever'); //returns 'fake1'
-mock(); //throws unexpected arguments
 ```
 
 
@@ -318,6 +287,33 @@ function foo() {
 mock('testValue', foo); //returns 'fake1'
 mock.verify() //returns true
 mock('testValue',foo); //throws unexpected arguments
+```
+
+Mocking an object
+----------------
+
+__Partial object mock__
+
+```js
+function newCustomer(_name) {
+	var c = {};
+
+	c.getName = function ()
+	{
+		return _name;
+	};
+
+	return c;
+}
+
+var customer = newCustomer('Alfonzo The Real');
+var customerMock = mock(customer);
+
+customerMock.getName.expect().return('Johnny Fake');
+
+customer.getName(); //returns Johnny Fake
+customer.getName(); //returns Alfonzo The Real
+customerMock.verify(); //returns true
 ```
 
 Mocking require
