@@ -44,6 +44,31 @@ original(); //returns 'realValue'
 ```
 
 Note: Consumers do not need to provide a `thisArg`. It is optional and only used to force a specific `this` when the original fallback is called (low-level partial mock usage).
+Mocking an object
+-----------------
+__Partial object mock__
+
+```js
+function newCustomer(_name) {
+	var c = {};
+
+	c.getName = function ()
+	{
+		return _name;
+	};
+
+	return c;
+}
+
+var customer = newCustomer('Alfonzo The Real');
+var customerMock = mock(customer);
+
+customerMock.getName.expect().return('Johnny Fake');
+
+customer.getName(); //returns Johnny Fake
+customer.getName(); //returns Alfonzo The Real
+customerMock.verify(); //returns true
+```
 
 
 
@@ -355,32 +380,6 @@ requireMock.reset(); //is an alias for expectRequire.reset()
 require('./realDep'); //returns realDep
 
 ```
-Mocking an object
------------------
-__Partial object mock__
-
-```js
-function newCustomer(_name) {
-	var c = {};
-
-	c.getName = function ()
-	{
-		return _name;
-	};
-
-	return c;
-}
-
-var customer = newCustomer('Alfonzo The Real');
-var customerMock = mock(customer);
-
-customerMock.getName.expect().return('Johnny Fake');
-
-customer.getName(); //returns Johnny Fake
-customer.getName(); //returns Alfonzo The Real
-customerMock.verify(); //returns true
-```
-
 Mocking promises
 -----------------
 __Mocking resolve__
