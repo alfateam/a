@@ -31,11 +31,13 @@ Mocking a function
 __Partial mock__
 
 ```js
+import a from 'a';
+
 var original = function() {
 	return 'realValue';
 }
 
-var mock = require('a').mock(original);
+var mock = a.mock(original);
 original = mock;
 mock.expect().return('fake');
 
@@ -48,7 +50,9 @@ Note: Consumers do not need to provide a `thisArg`. It is optional and only used
 __Strict mock__
 
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 mock.expect().return('fake');
 
 mock(); //returns 'fake'
@@ -58,7 +62,9 @@ mock(); //throws unexpected arguments
 __Expecting arguments__
 
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 mock.expect('testValue1').return('fake1');
 mock.expect('testValue2').return('fake2');
 
@@ -73,7 +79,9 @@ mock('foo'); //throws unexpected arguments
 __Expecting multiple arguments__
 
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 mock.expect('firstArg1', 'secondArg1').return('fake1');
 mock.expect('firstArg2', 'secondArg2').return('fake2');
 
@@ -87,7 +95,9 @@ mock('foo', 'bar'); //throws unexpected arguments
 __Expecting array__
 
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 mock.expect(['a','b']).return('fake1');
 mock.expect(['a','b']).return('fake2');
 mock.expect(['c','d').return('fake3');
@@ -102,7 +112,9 @@ mock(['foo', 'bar']); //throws unexpected arguments
 __Expecting struct__
 
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 var obj = {};
 mock.expect({a : 1}).return('fake1');
 mock.expect({a : 2}).return('fake2');
@@ -122,7 +134,9 @@ Note: Struct matching is strict on leaf properties. All leaf property values mus
 __Ignoring a single argument__
 
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 mock.ignore().expect('foo').return('fake1');
 
 mock('ignore me', 'foo'); //returns 'fake1'
@@ -132,7 +146,9 @@ mock(); //throws unexpected arguments
 __Ignoring all arguments__
 
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 mock.ignoreAll().return('fake1'); //same as expectAnything
 
 mock('someRandomValue', 'whatever'); //returns 'fake1'
@@ -142,7 +158,9 @@ mock(); //throws unexpected arguments
 __Repeats__
 
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 mock.expect().return('fake').repeat(2);
 
 mock(); //returns 'fake'
@@ -153,7 +171,9 @@ mock(); //throws unexpected arguments
 __Infinite repeats__
 
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 mock.expect().return('fake').repeatAny();
 
 mock(); //returns 'fake'
@@ -165,7 +185,9 @@ mock(); //returns 'fake'...
 __Throwing exceptions__
 
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 var error = new Error('invalid operation');
 mock.expect().throw(error);
 mock.expect().return('fake');
@@ -177,7 +199,9 @@ mock(); //returns 'fake'
 __Intercepting__
 
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 mock.expect('testValue').whenCalled(onCalled).return('fake1');
 
 function onCalled(arg) {
@@ -191,7 +215,9 @@ mock(); //throws unexpected arguments
 __Verify (fail)__
 
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 mock.expect('testValue1').return('fake1');
 mock.expect('testValue2').return('fake2');
 
@@ -202,7 +228,9 @@ mock.verify(); //throws mock has 1 pending functions
 __Verify (success)__
 
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 mock.expect('testValue1').return('fake1');
 mock.expect('testValue2').return('fake2');
 
@@ -214,7 +242,9 @@ mock.verify(); //returns true
 __returning void (compact syntax)__
 
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 mock.expect('testValue1');
 mock.expect('testValue2').repeat(2);
 
@@ -226,7 +256,9 @@ mock.verify(); //returns true
 
 __..is equivalent to ..__
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 mock.expect('testValue1').return();
 mock.expect('testValue2').return().repeat(2);
 
@@ -238,11 +270,13 @@ mock.verify(); //returns true
 
 __Reset mock__
 ```js
+import a from 'a';
+
 var original = function() {
 	return 'realValue';
 }
 
-var mock = require('a').mock(original);
+var mock = a.mock(original);
 mock.expect().return('fake');
 mock.reset();
 
@@ -251,7 +285,9 @@ mock(); //returns 'realValue'
 
 __Returning resolved promise__
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 mock.expect('foo').resolve('fake');
 
 mock('foo').then(function(returned){
@@ -261,7 +297,9 @@ mock('foo').then(function(returned){
 
 __Returning rejected promise__
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 mock.expect('foo').reject('fake');
 
 mock('foo').then(null, function(returned){
@@ -272,7 +310,9 @@ mock('foo').then(null, function(returned){
 __Strict mock - advanced scenario__
 
 ```js
-var mock = require('a').mock();
+import a from 'a';
+
+var mock = a.mock();
 mock.expect('testValue').ignore().whenCalled(onCalled).return('fake1');
 
 function onCalled(arg,callback) {
@@ -295,6 +335,8 @@ Mocking an object
 __Partial object mock__
 
 ```js
+import a from 'a';
+
 function newCustomer(_name) {
 	var c = {};
 
@@ -307,7 +349,7 @@ function newCustomer(_name) {
 }
 
 var customer = newCustomer('Alfonzo The Real');
-var customerMock = mock(customer);
+var customerMock = a.mock(customer);
 
 customerMock.getName.expect().return('Johnny Fake');
 
@@ -381,7 +423,7 @@ Mocking promises
 __Mocking resolve__
 
 ```js
-var a = require('a');
+import a from 'a';
 
 var promise = a.promise(); //mocked promise
 
@@ -400,7 +442,7 @@ function error(e) {
 __Mocking resolve (alternative syntax)__
 
 ```js
-var a = require('a');
+import a from 'a';
 
 var promise = a.promise(); //mocked promise
 
@@ -419,7 +461,7 @@ function error(e) {
 __Mocking reject__
 
 ```js
-var a = require('a');
+import a from 'a';
 
 var promise = a.promise();
 
@@ -438,7 +480,7 @@ function error(e) {
 __Mocking reject (alternative syntax)__
 
 ```js
-var a = require('a');
+import a from 'a';
 
 var promise = a.promise();
 
@@ -497,6 +539,8 @@ module.exports = function () {
 __counter_specs/new.js__
 
 ```js
+import a from 'a';
+
 function act(c) {
 	var createCounter = require('../counter');
 	c.sut = createCounter();
@@ -507,8 +551,10 @@ module.exports = act;
 __counter_specs/when_new.js__
 
 ```js
+import a from 'a';
+
 var c = {}; //test context object
-var when = require('a').when;
+var when = a.when;
 
 when('./new', c). //set up
 	it('should be an object').
@@ -533,8 +579,10 @@ module.exports = act;
 __counter_specs/new/when_incremented.js__
 
 ```js
+import a from 'a';
+
 var c = {};
-var when = require('a').when;
+var when = a.when;
 
 when('./increment', c).
 	it('should have value equal to 1').
@@ -581,6 +629,7 @@ Async test support
 Modified act files should look like this:
 
 ```js
+import a from 'a';
 
 function act(c) {
 	...
@@ -592,6 +641,7 @@ function act(c) {
 or
 
 ```js
+import a from 'a';
 
 async function act(c) {
 	...
@@ -601,7 +651,8 @@ async function act(c) {
 ```
 Test file should look like this:
 ```js
-var when = require('a').when;
+import a from 'a';
+var when = a.when;
 var c = {};
 
 when(c).then(it => {
