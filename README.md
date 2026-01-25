@@ -3,7 +3,7 @@ _a_
 _Mocking framework_ 
 
 [![CI](https://github.com/alfateam/a/actions/workflows/ci.yml/badge.svg)](https://github.com/alfateam/a/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/alfateam/a/graph/badge.svg)](https://codecov.io/gh/alfateam/a)
+[![coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/lroal/52379544f8b69480bea22bffb0f34472/raw/coverage.json)](https://gist.github.com/lroal/52379544f8b69480bea22bffb0f34472)
 
 
 The mocking framework can be used in any JavaScript testing framework.

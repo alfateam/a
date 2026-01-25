@@ -25,7 +25,7 @@
     "url": "git@github.com:alfateam/a.git"
   },
   "scripts": {
-    "test": "c8 --reporter=lcov --reporter=text node --test"
+    "test": "c8 --reporter=lcov --reporter=text --reporter=json-summary node --test"
   },
   "dependencies": {
     "a_mock": "^2.0.1"
