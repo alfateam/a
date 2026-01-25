@@ -45,6 +45,7 @@ original(); //returns 'realValue'
 
 Note: Consumers do not need to provide a `thisArg`. It is optional and only used to force a specific `this` when the original fallback is called (low-level partial mock usage).
 Mocking an object
+
 -----------------
 __Partial object mock__
 
