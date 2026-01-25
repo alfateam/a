@@ -22,7 +22,7 @@ jobs:
       - name: Compute coverage
         if: ${{ github.ref == 'refs/heads/master' }}
         run: |
-          node -e 'const s=require("./coverage/coverage-summary.json"); const pct=s.total.lines.pct.toFixed(2); require("fs").appendFileSync(process.env.GITHUB_ENV, "COVERAGE=" + pct + "%\n");'
+          node -e 'const s=require("./coverage/coverage-summary.json"); const pct=s.total.lines.pct.toFixed(2); require("fs").appendFileSync(process.env.GITHUB_ENV, "COVERAGE=" + pct + "%");'
       - name: Update coverage badge
         if: ${{ github.ref == 'refs/heads/master' }}
         uses: schneegans/dynamic-badges-action@v1.7.0
